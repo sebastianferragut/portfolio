@@ -1,6 +1,182 @@
+:root {
+  --color-accent: oklch(65% 20% 240); /* Middle blue */
+}
+
+/* Body styles */
 body {
     /* Set line height to 1.5 times the font size
          and use the OS’s UI font as the website font
        */
     font: 100%/1.5 system-ui;
+     
+    /* Limit the width of the content to 100ch for readability */
+    max-width: 100ch;
+    
+    /* Center the content horizontally */
+    margin-inline: auto;
+
+    /* Padding for smaller viewport  */
+    padding-inline: 1em;
+
+    /* Use the accent color globally */
+    accent-color: var(--color-accent); 
 }
+
+/* Navigation bar styles */
+nav {
+  display: flex; /* Enable Flexbox layout */
+  margin-bottom: 1em; /* Separate nav from content */
+  border-bottom: 1px solid oklch(80% 3% 200); /* Subtle bottom border */
+}
+
+nav ul {
+  /* Remove layout and styling for the <ul> itself */
+  display: contents;
+}
+
+nav ul li {
+  /* Remove layout and styling for the <li> elements */
+  display: contents;
+}
+
+nav a {
+  flex: 1; /* Each link takes up equal space */
+  text-decoration: none; /* Remove underline from links */
+  color: inherit; /* Use the same text color as the parent */
+  text-align: center; /* Center text in its box */
+  padding: 0.5em; /* Add spacing inside each link */
+  transition: all 0.3s; /* Smooth hover transitions */
+}
+
+nav a:hover {
+  background-color: oklch(from var(--color-accent) 95% 5% h); /* Light color with the same hue */
+  border-bottom: 0.4em solid var(--color-accent); /* Accent color for hover effect */
+}
+
+nav a.current {
+  border-bottom: 0.4em solid oklch(85% 2% 200); /* Highlight for current page link */
+  padding-bottom: 0.1em; /* Adjust padding to counter border size */
+}
+
+/* Form styles */
+form {
+  display: grid; /* Enable grid layout */
+  grid-template-columns: auto 1fr; /* Two columns: labels auto-sized, inputs fill remaining space */
+  gap: 1em; /* Add spacing between rows and columns */
+}
+
+form label {
+  grid-column: 1; /* Place labels in the first column */
+}
+
+form input,
+form textarea,
+form button {
+  font: inherit; /* Use the same font as the rest of the page */
+  grid-column: 2; /* Place controls in the second column */
+  width: 100%; /* Fill the available space in their grid cell */
+  box-sizing: border-box; /* Include padding and borders in width calculation */
+}
+
+form button {
+  grid-column: 1 / -1; /* Make the button span across both columns */
+}
+
+/* Projects grid container */
+.projects {
+  display: grid; /* Enable grid layout */
+  grid-template-columns: repeat(auto-fill, minmax(15em, 1fr)); /* Responsive columns */
+  gap: 1.5em; /* Add spacing between grid items */
+  padding: 1em; /* Add some padding inside the container */
+}
+
+/* Individual project card styling */
+.projects article {
+  display: grid; /* Make each article a grid */
+  grid-template-rows: subgrid; /* Align rows with the parent grid */
+  grid-row: span 3; /* Each article spans 3 rows */
+  gap: 1em; /* Space out items inside the article */
+}
+
+/* Headings for project cards */
+.projects article h2 {
+  margin: 0; /* Remove extra margin for consistent spacing */
+  font-size: 1.5em; /* Distinguish <h2> size from the body text */
+  line-height: 1.1; /* Tighter spacing for headings */
+  text-wrap: balance; /* Prevent uneven lines */
+}
+
+/* CV grid container */
+.cv {
+  display: grid; /* Enable grid layout */
+  grid-template-columns: 1fr; /* Single column by default */
+  gap: 2em; /* Space between sections */
+  margin-inline: auto; /* Center content */
+}
+
+/* CV section styling */ 
+.cv section {
+  display: grid;
+  grid-template-columns: 1fr; /* Single column by default */
+  gap: .1em;
+}
+
+.cv section a{
+  text-decoration: none;
+  color: var(--color-accent);
+  padding: 0.5em 1em;
+  background-color: rgba(0, 0, 0, 0.05);
+  border-radius: 0.3em;
+  margin-right: 0.5em;
+  transition: all 0.3s ease;
+}
+
+.cv section a:hover{
+  background-color: var(--color-accent);
+  color: white;
+}
+
+/* Style for the link wrapper */
+.cv .link-wrapper {
+  display: flex; /* Arrange links in a row */
+  flex-wrap: wrap; /* Allow links to wrap to the next line if necessary */
+  gap: 1em; /* Space between the links */
+  max-width: 500px; /* Set a max width for the wrapper */
+  margin: 0 auto; /* Center the wrapper */
+}
+
+/* Ensure all links inside the wrapper have the same width */
+.cv .link-wrapper a {
+  display: block; /* Make each link a block-level element */
+  width: 100%; /* Allow each link to take up full width within the wrapper */
+  text-decoration: none;
+  color: var(--color-accent);
+  padding: 0.5em 1em;
+  background-color: rgba(0, 0, 0, 0.05);
+  border-radius: 0.3em;
+  transition: all 0.3s ease;
+}
+
+/* CV article styling */
+.cv article h2 {
+  font-size: 2em; /* Slightly larger than h1 for prominence */
+  font-weight: bold;
+}
+
+.cv h3 {
+  margin-bottom: 0.005em;
+}
+
+
+/* Add general heading styles */
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1.1; /* Consistent tighter leading for all headings */
+  text-wrap: balance; /* Balance lines for all headings */
+}
+
+/* Specific styling for <h1> to enhance hierarchy */
+h1 {
+  font-size: 400%; /* Significantly larger than body text for contrast */
+  margin-bottom: 0.5em; /* Space below the <h1> */
+}
+
