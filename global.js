@@ -38,7 +38,7 @@ for (let p of pages) {
     let url = p.url;
     let title = p.title;
     
-    url = !ARE_WE_HOME && !url.startsWith('http') ? '../' + url : url;
+    url = !ARE_WE_HOME && !url.startsWith('http') ? '../' + url : (ARE_WE_HOME && !url.startsWith('http') ? './' + url : url);
     
     // Create an <a> element for the link
     let a = document.createElement('a');
