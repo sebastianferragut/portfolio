@@ -19,11 +19,11 @@ function setColorScheme(colorScheme) {
 
 // Initialize pages for navigation
 let pages = [
-  { url: '', title: 'Home' },
-  { url: 'projects/', title: 'Projects' },
-  { url: 'resume/', title: 'CV' },
-  { url: 'contact/', title: 'Contact' },
-  { url: "https://github.com/sebastianferragut", title: 'GitHub' },
+    { url: '', title: 'Home' },
+    { url: 'projects/', title: 'Projects' },
+    { url: 'resume/', title: 'CV' },
+    { url: 'contact/', title: 'Contact' },
+    { url: "https://github.com/sebastianferragut", title: 'GitHub' },
 ];
 
 // Check if we are on the home page
@@ -35,30 +35,33 @@ document.body.prepend(nav);
 
 // Add links to the <nav>
 for (let p of pages) {
-  let url = p.url;
-  let title = p.title;
+    let url = p.url;
+    let title = p.title;
 
-  // Conditionally modify the URL if we are not on the home page and it's not absolute
-  url = !ARE_WE_HOME && !url.startsWith('http') ? '../' + url : url;
+    // If we're not on the home page, we should keep the path relative to the site root
+    // This removes the `../` logic and makes the URLs relative to the root of the site
+    if (!ARE_WE_HOME && !url.startsWith('http')) {
+        url = `/${url}`;
+    }
 
-  // Create an <a> element for the link
-  let a = document.createElement('a');
-  a.href = url;
-  a.textContent = title;
+    // Create an <a> element for the link
+    let a = document.createElement('a');
+    a.href = url;
+    a.textContent = title;
 
-  // Add current page class if this is the current page
-  a.classList.toggle(
-    'current',
-    a.host === location.host && a.pathname === location.pathname
-  );
+    // Add current page class if this is the current page
+    a.classList.toggle(
+        'current',
+        a.host === location.host && a.pathname === location.pathname
+    );
 
-  // Open external links (like GitHub) in a new tab
-  if (a.host !== location.host) {
-    a.target = "_blank";  // Opens link in new tab
-  }
+    // Open external links (like GitHub) in a new tab
+    if (a.host !== location.host) {
+        a.target = "_blank";  // Opens link in new tab
+    }
 
-  // Append the link to the <nav>
-  nav.append(a);
+    // Append the link to the <nav>
+    nav.append(a);
 }
 
 // Insert the color scheme switch at the beginning of the <body>
