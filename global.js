@@ -19,7 +19,7 @@ function setColorScheme(colorScheme) {
 
 // Initialize pages for navigation
 let pages = [
-{ url: 'index.html', title: 'Home' },
+{ url: '../index.html', title: 'Home' },
 { url: '../projects/', title: 'Projects' },
 { url: '../resume/', title: 'CV' },
 { url: '../contact/', title: 'Contact' },
@@ -37,12 +37,6 @@ document.body.prepend(nav);
 for (let p of pages) {
     let url = p.url;
     let title = p.title;
-    
-    // If we are on the homepage, adjust relative URLs
-    if (ARE_WE_HOME && !url.startsWith('http')) {
-        // Ensure all internal URLs are relative to '/portfolio/'
-        url = '/portfolio/' + url;
-    }
     
     // Create an <a> element for the link
     let a = document.createElement('a');
@@ -63,6 +57,7 @@ for (let p of pages) {
     // Append the link to the <nav>
     nav.append(a);
 }
+console.log(pages);
 
 
 // Insert the color scheme switch at the beginning of the <body>
