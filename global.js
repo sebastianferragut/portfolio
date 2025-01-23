@@ -29,9 +29,6 @@ let pages = [
 // Check if we are on the home page
 const ARE_WE_HOME = document.documentElement.classList.contains('home');
 
-// Base path for deployment
-const BASE_PATH = '/portfolio/';
-
 // Create the <nav> element
 let nav = document.createElement('nav');
 document.body.prepend(nav);
@@ -40,13 +37,8 @@ document.body.prepend(nav);
 for (let p of pages) {
     let url = p.url;
     let title = p.title;
-
-    // Use relative or absolute paths based on ARE_WE_HOME
-    if (!ARE_WE_HOME && !url.startsWith('http')) {
-        url = '../' + url; // For non-home pages, use relative paths
-    } else if (ARE_WE_HOME && !url.startsWith('http')) {
-        url = BASE_PATH + url; // For home page, use absolute paths
-    }
+    
+    url = !ARE_WE_HOME && !url.startsWith('http') ? '../' + url : url;
     
     // Create an <a> element for the link
     let a = document.createElement('a');
@@ -68,7 +60,6 @@ for (let p of pages) {
     nav.append(a);
 }
 
-console.log(nav);
 
 // Insert the color scheme switch at the beginning of the <body>
 document.body.insertAdjacentHTML(
