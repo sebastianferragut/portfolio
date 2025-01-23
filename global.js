@@ -19,11 +19,11 @@ function setColorScheme(colorScheme) {
 
 // Initialize pages for navigation
 let pages = [
-{ url: '../index.html', title: 'Home' },
-{ url: '../projects/', title: 'Projects' },
-{ url: '../resume/', title: 'CV' },
-{ url: '../contact/', title: 'Contact' },
-{ url: "https://github.com/sebastianferragut", title: 'GitHub' },
+  { url: '', title: 'Home' },
+  { url: 'projects/', title: 'Projects' },
+  { url: 'resume/', title: 'CV' },
+  { url: 'contact/', title: 'Contact' },
+  { url: "https://github.com/sebastianferragut", title: 'GitHub' },
 ];
 
 // Check if we are on the home page
@@ -35,30 +35,36 @@ document.body.prepend(nav);
 
 // Add links to the <nav>
 for (let p of pages) {
-    let url = p.url;
-    let title = p.title;
-    
-    // Create an <a> element for the link
-    let a = document.createElement('a');
-    a.href = url;
-    a.textContent = title;
+  let url = p.url;
+  let title = p.title;
 
-    // Add current page class if this is the current page
-    a.classList.toggle(
-        'current',
-        a.host === location.host && a.pathname === location.pathname
-    );
+  // Conditionally modify the URL if we are not on the home page and it's not absolute
+  if (ARE_WE_HOME){
+    url = "portfolio/" + url;
+  } 
 
-    // Open external links (like GitHub) in a new tab
-    if (a.host !== location.host) {
-        a.target = "_blank";  // Opens link in new tab
-    }
+  //comment above out to work locally in Live Preview
+  
+  // Create an <a> element for the link
+  let a = document.createElement('a');
+  a.href = url;
+  a.textContent = title;
 
-    // Append the link to the <nav>
-    nav.append(a);
+  // Add current page class if this is the current page
+  a.classList.toggle(
+    'current',
+    a.host === location.host && a.pathname === location.pathname
+  );
+
+  // Open external links (like GitHub) in a new tab
+  if (a.host !== location.host) {
+    a.target = "_blank";  // Opens link in new tab
+  }
+
+  // Append the link to the <nav>
+  nav.append(a);
 }
-console.log(pages);
-
+console.log(ARE_WE_HOME);
 
 // Insert the color scheme switch at the beginning of the <body>
 document.body.insertAdjacentHTML(
@@ -122,4 +128,3 @@ form?.addEventListener('submit', function(event) {
   // Open the URL with the constructed parameters
   location.href = url;
 });
-
