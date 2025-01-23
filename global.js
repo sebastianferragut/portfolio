@@ -19,11 +19,11 @@ function setColorScheme(colorScheme) {
 
 // Initialize pages for navigation
 let pages = [
-    { url: '', title: 'Home' },
-    { url: 'projects/', title: 'Projects' },
-    { url: 'resume/', title: 'CV' },
-    { url: 'contact/', title: 'Contact' },
-    { url: "https://github.com/sebastianferragut", title: 'GitHub' },
+{ url: '', title: 'Home' },
+{ url: 'projects/', title: 'Projects' },
+{ url: 'resume/', title: 'CV' },
+{ url: 'contact/', title: 'Contact' },
+{ url: "https://github.com/sebastianferragut", title: 'GitHub' },
 ];
 
 // Check if we are on the home page
@@ -38,11 +38,8 @@ for (let p of pages) {
     let url = p.url;
     let title = p.title;
 
-    // If we're not on the home page, we should keep the path relative to the site root
-    // This removes the `../` logic and makes the URLs relative to the root of the site
-    if (!ARE_WE_HOME && !url.startsWith('http')) {
-        url = `/${url}`;
-    }
+    // Make URLs relative to the root of the site
+    url = !url.startsWith('http') ? `/${url}` : url;
 
     // Create an <a> element for the link
     let a = document.createElement('a');
