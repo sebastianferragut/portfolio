@@ -39,12 +39,8 @@ for (let p of pages) {
   let title = p.title;
 
   // Conditionally modify the URL if we are not on the home page and it's not absolute
-  if (ARE_WE_HOME){
-    url = "portfolio/" + url;
-  } 
+  url = !ARE_WE_HOME && !url.startsWith('http') ? '../' + url : url;
 
-  //comment above out to work locally in Live Preview
-  
   // Create an <a> element for the link
   let a = document.createElement('a');
   a.href = url;
@@ -64,7 +60,6 @@ for (let p of pages) {
   // Append the link to the <nav>
   nav.append(a);
 }
-console.log(ARE_WE_HOME);
 
 // Insert the color scheme switch at the beginning of the <body>
 document.body.insertAdjacentHTML(
