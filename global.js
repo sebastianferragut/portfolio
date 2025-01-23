@@ -19,10 +19,10 @@ function setColorScheme(colorScheme) {
 
 // Initialize pages for navigation
 let pages = [
-{ url: '', title: 'Home' },
-{ url: 'projects/', title: 'Projects' },
-{ url: 'resume/', title: 'CV' },
-{ url: 'contact/', title: 'Contact' },
+{ url: 'index.html', title: 'Home' },
+{ url: '../projects/', title: 'Projects' },
+{ url: '../resume/', title: 'CV' },
+{ url: '../contact/', title: 'Contact' },
 { url: "https://github.com/sebastianferragut", title: 'GitHub' },
 ];
 
@@ -38,7 +38,11 @@ for (let p of pages) {
     let url = p.url;
     let title = p.title;
     
-    url = !ARE_WE_HOME && !url.startsWith('http') ? '../' + url : (ARE_WE_HOME && !url.startsWith('http') ? './' + url : url);
+    // If we are on the homepage, adjust relative URLs
+    if (ARE_WE_HOME && !url.startsWith('http')) {
+        // Ensure all internal URLs are relative to '/portfolio/'
+        url = '/portfolio/' + url;
+    }
     
     // Create an <a> element for the link
     let a = document.createElement('a');
