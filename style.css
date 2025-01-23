@@ -2,40 +2,118 @@
   --color-accent: oklch(65% 20% 240); /* Middle blue */
 }
 
+/* Apply light or dark theme based on OS color scheme */
+html {
+  color-scheme: light dark;
+}
+
+/* Light theme (when data-theme="light") */
+html[data-theme="light"] {
+  color-scheme: light;
+  background-color: white;
+  color: black;
+}
+
+html[data-theme="light"] nav {
+  background-color: white; /* Light background for the nav */
+}
+
+html[data-theme="light"] body {
+  background-color: white;
+  color: black;
+}
+
+/* Dark theme (when data-theme="dark") */
+html[data-theme="dark"] {
+  color-scheme: dark;
+  background-color: #121212;
+  color: white;
+}
+
+html[data-theme="dark"] nav {
+  background-color: #333; /* Darker nav background */
+}
+
+html[data-theme="dark"] body {
+  background-color: #121212; /* Dark background */
+  color: white; /* Light text color */
+}
+
+/* If using OS preference for automatic theme, it will default to the appropriate color scheme */
+html[data-theme="auto"] {
+  color-scheme: light dark;
+}
+
+/* Default styling for light mode (or the fallback mode) */
+body {
+  background-color: white;
+  color: black;
+}
+
+/* Dark mode styling */
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: #121212; /* Dark background */
+    color: white; /* Light text color */
+  }
+
+  nav {
+    background-color: #333; /* Darker nav */
+  }
+
+  a {
+    color: #bbb; /* Lighter link color */
+  }
+
+  a.current {
+    color: #0084ff; /* Highlight current link */
+  }
+}
+
+
+/* Style for the color-scheme label */
+.color-scheme {
+  position: absolute;
+  top: 1rem;  /* Adjust this value as needed */
+  right: 1rem;  /* Adjust this value as needed */
+  font-size: 70%;  /* Make the font size smaller */
+  font-family: inherit;  /* Inherit the font-family from the parent element */
+  background-color: transparent;  /* Optional: make the background transparent */
+  z-index: 1000;  /* Ensure it's on top of other elements */
+}
+
+/* Ensure the select dropdown matches the font family */
+#color-scheme-selector {
+  font-family: inherit;
+  font-size: 0.7rem;
+  padding: 0.5em;
+  cursor: pointer;
+}
+
+
+
 /* Body styles */
 body {
-    /* Set line height to 1.5 times the font size
-         and use the OS’s UI font as the website font
-       */
-    font: 100%/1.5 system-ui;
-     
-    /* Limit the width of the content to 100ch for readability */
-    max-width: 100ch;
-    
-    /* Center the content horizontally */
-    margin-inline: auto;
-
-    /* Padding for smaller viewport  */
-    padding-inline: 1em;
-
-    /* Use the accent color globally */
-    accent-color: var(--color-accent); 
+  font: 100%/1.5 system-ui;
+  max-width: 100ch;
+  margin-inline: auto;
+  padding-inline: 1em;
+  accent-color: var(--color-accent); 
 }
 
 /* Navigation bar styles */
 nav {
   display: flex; /* Enable Flexbox layout */
   margin-bottom: 1em; /* Separate nav from content */
-  border-bottom: 1px solid oklch(80% 3% 200); /* Subtle bottom border */
+  --border-color: oklch(50% 10% 200 / 40%); /* Semi-transparent border color */
+  border-bottom: 1px solid var(--border-color); /* Use the variable */
 }
 
 nav ul {
-  /* Remove layout and styling for the <ul> itself */
   display: contents;
 }
 
 nav ul li {
-  /* Remove layout and styling for the <li> elements */
   display: contents;
 }
 
@@ -49,7 +127,7 @@ nav a {
 }
 
 nav a:hover {
-  background-color: oklch(from var(--color-accent) 95% 5% h); /* Light color with the same hue */
+  background-color: color-mix(in oklch, var(--color-accent), canvas 85%); /* Improved background color mix */
   border-bottom: 0.4em solid var(--color-accent); /* Accent color for hover effect */
 }
 
@@ -179,4 +257,3 @@ h1 {
   font-size: 400%; /* Significantly larger than body text for contrast */
   margin-bottom: 0.5em; /* Space below the <h1> */
 }
-
