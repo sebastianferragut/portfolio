@@ -1,0 +1,75 @@
+[
+    {
+        "title": "U.S. Power Outage Analysis",
+        "year": "2024",
+        "image": "https://www.ready.gov/sites/default/files/2019-09/hero_power_outage.jpg",
+        "description": "Power outage analysis using data from continental U.S. from January 2000 to July 2016.",
+        "link": "https://sebastianferragut.github.io/U.S.-Power-Outage-Analysis/"
+    },
+    {
+        "title": "Effects of San Diego's Weather on Perceived Sickness",
+        "year": "2025",
+        "image": "https://raw.githubusercontent.com/sebastianferragut/portfolio/refs/heads/main/images/weathersdproject.jpg",
+        "description": "Exploratory visualization of the relationship between weather and perceived sickness in San Diego using weather data and Google Trends."
+    },
+    {
+        "title": "Understanding Heart Rate Variability Over Time of Day",
+        "year": "2025",
+        "image": "https://raw.githubusercontent.com/sebastianferragut/portfolio/refs/heads/main/images/heartrateproj.jpg",
+        "description": "Used BIG IDEAs Lab Glycemic Variability and Wearable Device Data to map heart rate variability over time of day across gender."
+    },
+    {
+        "title": "Lorem ipsum dolor sit.",
+        "year": "2023",
+        "image": "https://dsc106.com/labs/lab02/images/empty.svg",
+        "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam dolor quos, quod assumenda explicabo odio, nobis ipsa laudantium quas eum veritatis ullam sint porro minima modi molestias doloribus cumque odit."
+    },
+    {
+        "title": "Lorem ipsum dolor sit.",
+        "year": "2022",
+        "image": "https://dsc106.com/labs/lab02/images/empty.svg",
+        "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam dolor quos, quod assumenda explicabo odio, nobis ipsa laudantium quas eum veritatis ullam sint porro minima modi molestias doloribus cumque odit."
+    },
+    {
+        "title": "Lorem ipsum dolor sit.",
+        "year": "2021",
+        "image": "https://dsc106.com/labs/lab02/images/empty.svg",
+        "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam dolor quos, quod assumenda explicabo odio, nobis ipsa laudantium quas eum veritatis ullam sint porro minima modi molestias doloribus cumque odit."
+    },
+    {
+        "title": "Lorem ipsum dolor sit.",
+        "year": "2020",
+        "image": "https://dsc106.com/labs/lab02/images/empty.svg",
+        "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam dolor quos, quod assumenda explicabo odio, nobis ipsa laudantium quas eum veritatis ullam sint porro minima modi molestias doloribus cumque odit."
+    },
+    {
+        "title": "Lorem ipsum dolor sit.",
+        "year": "2022",
+        "image": "https://dsc106.com/labs/lab02/images/empty.svg",
+        "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam dolor quos, quod assumenda explicabo odio, nobis ipsa laudantium quas eum veritatis ullam sint porro minima modi molestias doloribus cumque odit."
+    },
+    {
+        "title": "Lorem ipsum dolor sit.",
+        "year": "2021",
+        "image": "https://dsc106.com/labs/lab02/images/empty.svg",
+        "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam dolor quos, quod assumenda explicabo odio, nobis ipsa laudantium quas eum veritatis ullam sint porro minima modi molestias doloribus cumque odit."
+    },
+    {
+        "title": "Lorem ipsum dolor sit.",
+        "year": "2023",
+        "image": "https://dsc106.com/labs/lab02/images/empty.svg",
+        "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam dolor quos, quod assumenda explicabo odio, nobis ipsa laudantium quas eum veritatis ullam sint porro minima modi molestias doloribus cumque odit."
+    },
+    {
+        "title": "Lorem ipsum dolor sit.",
+        "year": "2024",
+        "image": "https://dsc106.com/labs/lab02/images/empty.svg",
+        "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam dolor quos, quod assumenda explicabo odio, nobis ipsa laudantium quas eum veritatis ullam sint porro minima modi molestias doloribus cumque odit."
+    },
+    {
+        "title": "Lorem ipsum dolor sit.",
+        "year": "2022",
+        "image": "https://dsc106.com/labs/lab02/images/empty.svg",
+        "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam dolor quos, quod assumenda explicabo odio, nobis ipsa laudantium quas eum veritatis ullam sint porro minima modi molestias doloribus cumque odit."
+    }
+]

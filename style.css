@@ -168,12 +168,21 @@ form button {
   padding: 1em; /* Add some padding inside the container */
 }
 
+/* Projects image styling */
+.projects img {
+  width: 100%; /* Adjust width to 100% of the container's width */
+  height: auto; /* Maintain aspect ratio */
+  max-width: 400px; /* Maximum width for the image */
+  max-height: 400px; /* Maximum height for the image */
+  object-fit: cover; /* Ensures the image covers the area without distortion */
+}
+
 /* Individual project card styling */
 .projects article {
   display: grid; /* Make each article a grid */
-  grid-template-rows: subgrid; /* Align rows with the parent grid */
-  grid-row: span 3; /* Each article spans 3 rows */
+  grid-template-rows: auto; /* Align rows with the parent grid */
   gap: 1em; /* Space out items inside the article */
+  padding: 1em; /* Add padding inside each article */
 }
 
 /* Headings for project cards */
@@ -183,6 +192,34 @@ form button {
   line-height: 1.1; /* Tighter spacing for headings */
   text-wrap: balance; /* Prevent uneven lines */
 }
+
+/* Styling for project links */
+.project-link-wrapper {
+  display: flex; /* Arrange links in a row */
+  flex-wrap: wrap; /* Allow links to wrap to the next line if necessary */
+  gap: .5em; /* Space between the links */
+  max-width: 250px; /* Set a max width for the wrapper */
+  margin: 0 auto; /* Center the wrapper */
+}
+
+.project-link-wrapper a {
+  display: block; /* Make each link a block-level element */
+  width: 100%; /* Allow each link to take up full width within the wrapper */
+  text-decoration: none;
+  color: var(--color-accent);
+  padding: 0.5em .75em;
+  background-color: rgba(0, 0, 0, 0.05);
+  border-radius: 0.3em;
+  transition: all 0.3s ease;
+}
+
+.project-link-wrapper a:hover {
+  background-color: var(--color-accent); /* Background on hover */
+  color: white; /* Text color on hover */
+  border-color: var(--color-accent); /* Border color on hover */
+}
+
+
 
 /* CV grid container */
 .cv {
@@ -257,3 +294,34 @@ h1 {
   font-size: 400%; /* Significantly larger than body text for contrast */
   margin-bottom: 0.5em; /* Space below the <h1> */
 }
+
+/* Styling homepage GitHub stats */
+#profile-stats dl {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);  /* Four equal-sized columns */
+  gap: 10px;  /* Space between grid items */
+}
+
+#profile-stats dt {
+  grid-row: 1;  /* Place <dt> elements on the first row */
+  font-weight: bold;
+}
+
+#profile-stats dd {
+  grid-row: 2;  /* Place <dd> elements on the second row */
+}
+
+#profile-stats dt, #profile-stats dd {
+  padding: 5px;
+  text-align: center;  /* Center align text */
+}
+
+#profile-stats dl dt {
+  text-transform: uppercase;  
+  font-size: 1em;
+}
+
+#profile-stats dl dd {
+  font-size: 1em;
+}
+

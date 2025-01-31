@@ -123,3 +123,91 @@ form?.addEventListener('submit', function(event) {
   // Open the URL with the constructed parameters
   location.href = url;
 });
+
+// Importing project data into projects page
+export async function fetchJSON(url) {
+  try {
+      // Fetch the JSON file from the given URL
+      const response = await fetch(url);
+
+      // Check if the response is OK (status 200)
+      if (!response.ok) {
+          throw new Error(`Failed to fetch projects: ${response.statusText}`);
+      }
+
+      // Parse the JSON response
+      const data = await response.json();
+      return data; 
+  } catch (error) {
+      console.error('Error fetching or parsing JSON data:', error);
+  }
+}
+
+// Rendering projects 
+export function renderProjects(projects, containerElement, headingLevel = 'h3') {
+  // Validate containerElement
+  if (!(containerElement instanceof HTMLElement)) {
+      console.error('Invalid container element provided.');
+      return;
+  }
+
+  // Ensure projects is an array
+  if (!Array.isArray(projects)) {
+      console.error('Projects data is not an array:', projects);
+      return;
+  }
+
+  // Clear existing content
+  containerElement.innerHTML = '';
+
+  projects.forEach(project => {
+    // Validate project object
+    if (!project || typeof project !== 'object' || !project.title) {
+        console.error('Invalid project data provided:', project);
+        return;
+    }
+
+    // Create an article element
+    const article = document.createElement('article');
+
+    // Validate headingLevel (ensure it's an h1-h6 tag)
+    const validHeadingLevels = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'];
+    if (!validHeadingLevels.includes(headingLevel)) {
+        console.warn(`Invalid heading level "${headingLevel}" provided. Defaulting to h3.`);
+        headingLevel = 'h3';
+    }
+
+    // Construct inner HTML dynamically
+    let articleContent = `
+        <${headingLevel}>${project.title}</${headingLevel}>
+        ${project.image ? `<img src="${project.image}" alt="${project.title}">` : ''}
+        ${project.description ? `<p>${project.description}</p>` : ''}
+    `;
+
+    // Append link if it exists
+    if (project.link) {
+      articleContent += `
+      <div class="project-link-wrapper">
+        <a href="${project.link}" target="_blank">View Project</a>
+      </div>`;
+    }
+
+    // Set innerHTML with content
+    article.innerHTML = articleContent;
+
+    // Append the article to the container
+    containerElement.appendChild(article);
+  });
+}
+
+// Fetching GitHub user data 
+export async function fetchGitHubData(username) {
+  try {
+    const response = await fetchJSON(`https://api.github.com/users/${username}`);
+    return response;
+  } catch (error) {
+    console.error("Error fetching GitHub data:", error);
+    return null; // In case of error, return null
+  }
+}
+
