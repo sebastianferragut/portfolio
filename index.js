@@ -1,9 +1,3 @@
-//Has to be the below to work locally
-//import { fetchJSON, renderProjects, fetchGitHubData } from './global.js';
-//const projects = await fetchJSON('./lib/projects.json');
-
-
-// For deployment, use 
 import { fetchJSON, renderProjects, fetchGitHubData } from './global.js';
 const projects = await fetchJSON('./lib/projects.json');
 console.log(projects);
