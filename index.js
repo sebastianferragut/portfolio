@@ -1,10 +1,13 @@
 //Has to be the below to work locally
 //import { fetchJSON, renderProjects, fetchGitHubData } from '../global.js';
+//const projects = await fetchJSON('../lib/projects.json');
 
 
 // For deployment, use 
 import { fetchJSON, renderProjects, fetchGitHubData } from 'global.js';
-const projects = await fetchJSON('../lib/projects.json');
+const projects = await fetchJSON('/lib/projects.json');
+
+// Display the latest 3 projects
 const latestProjects = projects.slice(0, 3);
 
 const projectsContainer = document.querySelector('.projects');
