@@ -9,13 +9,13 @@
     {
         "title": "Weather's Effect on Perceived Sickness in SD",
         "year": "2025",
-        "image": "/images/weathersdproject.jpg",
+        "image": "images/weathersdproject.jpg",
         "description": "Exploratory visualization of the relationship between weather and perceived sickness in San Diego using weather data and Google Trends."
     },
     {
         "title": "Understanding Heart Rate Variability Over Time of Day",
         "year": "2025",
-        "image": "/images/heartrateproj.jpg",
+        "image": "images/heartrateproj.jpg",
         "description": "Used BIG IDEAs Lab Glycemic Variability and Wearable Device Data to map heart rate variability over time of day across gender."
     },
     {
