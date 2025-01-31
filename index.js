@@ -1,5 +1,9 @@
-import { fetchJSON, renderProjects, fetchGitHubData } from '../global.js';
+//Has to be the below to work locally
+//import { fetchJSON, renderProjects, fetchGitHubData } from '../global.js';
 
+
+// For deployment, use 
+import { fetchJSON, renderProjects, fetchGitHubData } from 'global.js';
 const projects = await fetchJSON('../lib/projects.json');
 const latestProjects = projects.slice(0, 3);
 
