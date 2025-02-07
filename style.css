@@ -219,6 +219,137 @@ form button {
   border-color: var(--color-accent); /* Border color on hover */
 }
 
+.project-details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+}
+
+.project-year {
+  font-weight: bold;
+  color: var(--color-secondary);
+  font-size: 0.9em;
+}
+
+#projects-plot {
+  max-width: 20em;
+  margin-block: 2em;
+  overflow: visible;
+}
+
+/* Make pie chart wedges clickable */
+path {
+  cursor: pointer;
+  transition: opacity 300ms ease-in-out;
+}
+
+/* Highlight hovered wedge and fade out others */
+svg:has(path:hover) path:not(:hover) {
+  opacity: 0.5;
+}
+
+/* Styling for the selected wedge */
+.selected {
+  --color: oklch(60% 45% 0) !important;
+}
+
+.selected:is(path) {
+  fill: var(--color);
+}
+
+/* Highlight the selected legend item */
+.selected:is(li) {
+  font-weight: bold;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+
+/* Style the legend grid */
+.legend {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(9em, 1fr)); /* Responsive grid */
+  gap: 1em; /* Space between items */
+  margin-top: 1em;
+  padding: 1em;
+  border: 1px solid #ddd; /* Border around the legend */
+  border-radius: 8px;
+  background-color: var(--color);
+  list-style-type: none;
+  flex: 1;
+}
+
+/* Style each list item in the legend */
+.legend-item {
+  display: flex;  /* Flex layout for the item */
+  align-items: center;  /* Vertically center the items */
+  justify-content: flex-start;
+  gap: .75em;  /* Space between the swatch and the label */
+  font-size: 14px;
+}
+
+/* Style the swatch to look like a colored box */
+.swatch {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;  /* Make it round */
+  background-color: var(--color);  /* Use the custom color */
+  vertical-align: middle;  
+}
+
+.legend-item em {
+  font-style: italic;
+  color: #666;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  gap: 2em;
+}
+
+.search-container {
+  display: flex;
+  align-items: center; /* Aligns search bar and any buttons/icons */
+  width: 100%; /* Ensures full width */
+  padding: 10px;
+  background-color: var(--color); 
+  border-radius: 8px; /* Smooth rounded corners */
+}
+
+.searchBar {
+  flex: 1; /* Allows it to take up available space */
+  padding: 8px 12px;
+  font-size: 16px;
+  border: 1px solid var(--color);
+  border-radius: 5px;
+  outline: none; /* Removes default blue highlight */
+  transition: all 0.3s ease-in-out;
+}
+
+.searchBar:focus {
+  border-color: #007bff; /* Highlight border when active */
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+/* Style the clear button */
+.clear-btn {
+  position: absolute;
+  right: 15px; /* Adjust position */
+  background: transparent;
+  border: none;
+  font-size: 18px;
+  color: #aaa;
+  cursor: pointer;
+  display: none; /* Initially hidden */
+}
+
+.clear-btn:hover {
+  color: #555;
+}
+
+
+
 
 
 /* CV grid container */

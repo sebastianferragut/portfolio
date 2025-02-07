@@ -181,7 +181,10 @@ export function renderProjects(projects, containerElement, headingLevel = 'h3') 
     let articleContent = `
         <${headingLevel}>${project.title}</${headingLevel}>
         ${project.image ? `<img src="${project.image}" alt="${project.title}">` : ''}
-        ${project.description ? `<p>${project.description}</p>` : ''}
+        <div class="project-details">
+                ${project.description ? `<p>${project.description}</p>` : ''}
+                ${project.year ? `<p class="project-year">${project.year}</p>` : ''}
+        </div>
     `;
 
     // Append link if it exists
