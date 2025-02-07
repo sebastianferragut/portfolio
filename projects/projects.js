@@ -21,18 +21,26 @@ if (projectsTitle && Array.isArray(projects)) {
 // Generate plot with D3.js to visualize the amount of projects per year
 // Function to render the pie chart and legend
 let colors = d3.scaleOrdinal(d3.schemeTableau10);
-let selectedIndex = -1;
-let searchQuery = ""; // Define a global variable for search query
+let selectedYear = null; // Store selected year instead of selectedIndex
+let searchQuery = "";
+let colorMap = {}; // Map each year to a consistent color
 
 function renderPieChart(projectsGiven) {
     let rolledData = d3.rollups(
-        projectsGiven,
+        projects,
         (v) => v.length,
         (d) => d.year
     );
 
     let data = rolledData.map(([year, count]) => {
         return { value: count, label: year };
+    });
+
+    // Assign consistent colors to each year
+    data.forEach((d, i) => {
+        if (!colorMap[d.label]) {
+            colorMap[d.label] = colors(i);
+        }
     });
 
     let sliceGenerator = d3.pie().value((d) => d.value);
@@ -49,19 +57,17 @@ function renderPieChart(projectsGiven) {
         .enter()
         .append("path")
         .attr("d", arcGenerator)
-        .attr("fill", (d, i) => colors(i))
-        .attr("class", (d, i) => (i === selectedIndex ? "selected" : ""))
+        .attr("fill", (d) => colorMap[d.data.label]) // Use consistent color mapping
+        .attr("class", (d) => (d.data.label === selectedYear ? "selected" : ""))
         .on("click", function (event, d) {
-            selectedIndex = selectedIndex === d.index ? -1 : d.index;
-
-            let selectedYear = selectedIndex !== -1 ? data[selectedIndex].label : null;
+            // Set the selectedYear directly instead of using selectedIndex
+            selectedYear = selectedYear === d.data.label ? null : d.data.label;
 
             let filteredProjects = applyFilters(projects, selectedYear, searchQuery);
-
             renderProjects(filteredProjects, projectsContainer, "h2");
 
-            paths.attr("class", (_, i) => (i === selectedIndex ? "selected" : ""));
-            legendItems.attr("class", (_, i) => (i === selectedIndex ? "selected" : ""));
+            // Re-render pie chart so selections update properly
+            renderPieChart(projects);
         });
 
     let legend = d3.select(".legend");
@@ -72,24 +78,22 @@ function renderPieChart(projectsGiven) {
         .data(data)
         .enter()
         .append("li")
-        .attr("style", (d, idx) => `--color:${colors(idx)}`)
-        .attr("class", (d, idx) => (idx === selectedIndex ? "selected" : "legend-item"))
-        .html((d) => `<span class="swatch"></span> ${d.label} <em>(${d.value})</em>`)
-        .on("click", function (event, d, i) {
-            selectedIndex = selectedIndex === i ? -1 : i;
-
-            let selectedYear = selectedIndex !== -1 ? data[selectedIndex].label : null;
+        .attr("style", (d) => `--color:${colorMap[d.label]}`)
+        .attr("class", (d) => (d.label === selectedYear ? "selected" : "legend-item"))
+        .html((d) => `<span class="swatch" style="background:${colorMap[d.label]}"></span> ${d.label} <em>(${d.value})</em>`)
+        .on("click", function (event, d) {
+            // Set selected year instead of using index
+            selectedYear = selectedYear === d.label ? null : d.label;
 
             let filteredProjects = applyFilters(projects, selectedYear, searchQuery);
-
             renderProjects(filteredProjects, projectsContainer, "h2");
 
-            paths.attr("class", (_, i) => (i === selectedIndex ? "selected" : ""));
-            legendItems.attr("class", (_, i) => (i === selectedIndex ? "selected" : ""));
+            // Re-render pie chart so selections update properly
+            renderPieChart(projects);
         });
 }
 
-// Apply filters for both the selected year and the search query
+// Apply filters for both selected year and search query
 function applyFilters(projects, selectedYear, searchQuery) {
     return projects.filter((project) => {
         let matchSearchQuery = Object.values(project).join(" ").toLowerCase().includes(searchQuery.toLowerCase());
@@ -98,19 +102,17 @@ function applyFilters(projects, selectedYear, searchQuery) {
     });
 }
 
-renderPieChart(projects);
-
-// Event listener for the search input field
+// Event listener for search input
 let searchInput = document.querySelector(".searchBar");
 
 searchInput.addEventListener("input", (event) => {
-    searchQuery = event.target.value; // Store the search query globally
-
-    let selectedYear = selectedIndex !== -1 ? projects.find((p) => p.year === selectedIndex)?.year : null;
+    searchQuery = event.target.value;
 
     let filteredProjects = applyFilters(projects, selectedYear, searchQuery);
-
     renderProjects(filteredProjects, projectsContainer, "h2");
 
-    renderPieChart(filteredProjects); // Re-render the pie chart based on the filtered projects
+    renderPieChart(projects); // Re-render pie chart
 });
+
+// Initial render
+renderPieChart(projects);
