@@ -435,11 +435,13 @@ h1 {
 
 #profile-stats dt {
   grid-row: 1;  /* Place <dt> elements on the first row */
+  color: #aaa; /* Light gray color */
   font-weight: bold;
 }
 
 #profile-stats dd {
   grid-row: 2;  /* Place <dd> elements on the second row */
+  font-weight: bold;
 }
 
 #profile-stats dt, #profile-stats dd {
@@ -454,5 +456,126 @@ h1 {
 
 #profile-stats dl dd {
   font-size: 1em;
+}
+
+
+/* Styling for .stats on the meta page */
+.stats {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr); 
+  gap: 5px; /* Space between items */
+  border: 1px solid; /* Adjust color and thickness as needed */
+  padding: 10px; /* Add some spacing inside the border */
+  border-radius: 8px; /* Optional: Rounds the corners */
+}
+
+/* Column titles */
+.stats dt {
+  grid-row: 1; /* Place titles in the first row */
+  font-size: 0.75rem; /* Smaller font for titles */
+  text-transform: uppercase;
+  color: #aaa; /* Light gray color */
+  font-weight: bold;
+  text-align: left;
+}
+
+.stats dt, dd {
+  display: block;
+  text-align: left;
+}
+
+/* Stat values */
+.stats dd {
+  grid-row: 2;
+  font-size: 1.05rem; /* Larger font for stats */
+  font-weight: bold;
+  text-align: left;
+  margin: 0; /* Remove default margin */
+}
+
+/* Ensure dt and dd are arranged in rows */
+.stats dl {
+  display: contents; /* Allows dt and dd to be part of the same grid */
+}
+
+/* Styling for the meta page's gridlines */
+.gridlines line {
+  stroke: rgba(0, 0, 0, 0.1); /* Light gray for a subtle look */
+  stroke-width: 0.5;
+}
+
+/* Styling for the meta page's tooltips */
+circle {
+  transition: 200ms;
+  transform-origin: center;
+  transform-box: fill-box;
+}
+
+circle:hover {
+  transform: scale(1.5);
+}
+
+circle.selected {
+  fill: #ff6b6b;
+}
+
+/* Style for the tooltip container */
+#commit-tooltip {
+  position: fixed; /* Stay in place while scrolling */
+  top: 1em;
+  left: 1em;
+  border-radius: 8px; /* Rounded corners */
+  padding: .5em; /* Add some padding inside the tooltip */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow for elevation */
+  backdrop-filter: blur(8px); /* Optional: frosted glass effect */
+  pointer-events: none; /* Prevent it from blocking mouse events */
+  opacity: 0; /* Initially hidden */
+  visibility: hidden; /* Initially hidden */
+  transition: opacity 0.2s ease-in-out, visibility 0.2s ease-in-out; /* Smooth transition for fade in/out */
+  width: 200px;
+  font-size: 12px;
+}
+
+/* Style for the tooltip when visible */
+#commit-tooltip:not([hidden]) {
+  opacity: 1; /* Make it visible */
+  visibility: visible; /* Make it visible */
+}
+
+/* Style for the tooltip's labels and values */
+#commit-tooltip dt {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+#commit-tooltip dd {
+  margin: 0 0 10px 0;
+  padding-left: 10px;
+}
+
+dl.info {
+  /* ... other styles ... */
+  transition-duration: 500ms;
+  transition-property: opacity, visibility;
+}
+
+dl.info[hidden]:not(:hover, :focus-within) {
+  opacity: 0;
+  visibility: hidden;
+}
+
+/* Brush styling for the meta page */
+@keyframes marching-ants {
+  to {
+    stroke-dashoffset: -8; /* 5 + 3 */
+  }
+}
+
+.selection {
+  fill-opacity: 0.1;
+  stroke: black;
+  stroke-opacity: 0.7;
+  stroke-dasharray: 5 3;
+  animation: marching-ants 2s linear infinite;
 }
 

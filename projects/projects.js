@@ -25,9 +25,10 @@ let selectedYear = null; // Store selected year instead of selectedIndex
 let searchQuery = "";
 let colorMap = {}; // Map each year to a consistent color
 
+
 function renderPieChart(projectsGiven) {
     let rolledData = d3.rollups(
-        projects,
+        projects, // Always use full dataset
         (v) => v.length,
         (d) => d.year
     );
@@ -36,7 +37,7 @@ function renderPieChart(projectsGiven) {
         return { value: count, label: year };
     });
 
-    // Assign consistent colors to each year
+    // Ensure consistent colors for each year
     data.forEach((d, i) => {
         if (!colorMap[d.label]) {
             colorMap[d.label] = colors(i);
@@ -57,16 +58,15 @@ function renderPieChart(projectsGiven) {
         .enter()
         .append("path")
         .attr("d", arcGenerator)
-        .attr("fill", (d) => colorMap[d.data.label]) // Use consistent color mapping
+        .attr("fill", (d) => colorMap[d.data.label]) // Use year-based coloring
         .attr("class", (d) => (d.data.label === selectedYear ? "selected" : ""))
         .on("click", function (event, d) {
-            // Set the selectedYear directly instead of using selectedIndex
             selectedYear = selectedYear === d.data.label ? null : d.data.label;
 
             let filteredProjects = applyFilters(projects, selectedYear, searchQuery);
             renderProjects(filteredProjects, projectsContainer, "h2");
 
-            // Re-render pie chart so selections update properly
+            // Re-render the pie chart but with all years visible
             renderPieChart(projects);
         });
 
@@ -82,13 +82,12 @@ function renderPieChart(projectsGiven) {
         .attr("class", (d) => (d.label === selectedYear ? "selected" : "legend-item"))
         .html((d) => `<span class="swatch" style="background:${colorMap[d.label]}"></span> ${d.label} <em>(${d.value})</em>`)
         .on("click", function (event, d) {
-            // Set selected year instead of using index
             selectedYear = selectedYear === d.label ? null : d.label;
 
             let filteredProjects = applyFilters(projects, selectedYear, searchQuery);
             renderProjects(filteredProjects, projectsContainer, "h2");
 
-            // Re-render pie chart so selections update properly
+            // Keep pie chart displaying all years
             renderPieChart(projects);
         });
 }
