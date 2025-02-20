@@ -19,16 +19,18 @@
         "description": "Used BIG IDEAs Lab Glycemic Variability and Wearable Device Data to map heart rate variability over time of day across gender."
     },
     {
-        "title": "Lorem ipsum dolor sit.",
-        "year": "2023",
+        "title": "Bikewatching Map.",
+        "year": "2025",
         "image": "https://dsc106.com/labs/lab02/images/empty.svg",
-        "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam dolor quos, quod assumenda explicabo odio, nobis ipsa laudantium quas eum veritatis ullam sint porro minima modi molestias doloribus cumque odit."
+        "description": "Interactive map to visualize traffic of bikes in the Boston area. Created using Mapbox and D3.",
+        "link": "https://sebastianferragut.github.io/bikewatchingmap/"
     },
     {
-        "title": "Lorem ipsum dolor sit.",
-        "year": "2022",
+        "title": "Visualizing Mice Temperature Data Across Gender",
+        "year": "2025",
         "image": "https://dsc106.com/labs/lab02/images/empty.svg",
-        "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam dolor quos, quod assumenda explicabo odio, nobis ipsa laudantium quas eum veritatis ullam sint porro minima modi molestias doloribus cumque odit."
+        "description": "Interactive exploratory visualization of mice health data, comparing male and female mice. Created using D3.",
+        "link": "https://sebastianferragut.github.io/miced3/"
     },
     {
         "title": "Lorem ipsum dolor sit.",
