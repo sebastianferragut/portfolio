@@ -464,7 +464,7 @@ h1 {
   display: grid;
   grid-template-columns: repeat(6, 1fr); 
   gap: 5px; /* Space between items */
-  border: 1px solid; /* Adjust color and thickness as needed */
+  /* border: 1px solid; Adjust color and thickness as needed */
   padding: 10px; /* Add some spacing inside the border */
   border-radius: 8px; /* Optional: Rounds the corners */
 }
@@ -488,7 +488,6 @@ h1 {
 .stats dd {
   grid-row: 2;
   font-size: 1.05rem; /* Larger font for stats */
-  font-weight: bold;
   text-align: left;
   margin: 0; /* Remove default margin */
 }
@@ -503,6 +502,52 @@ h1 {
   stroke: rgba(0, 0, 0, 0.1); /* Light gray for a subtle look */
   stroke-width: 0.5;
 }
+
+/* Style for unit visualizations */
+.files {
+  display: grid;
+  grid-template-columns: 200px auto; /* Two columns: filename | line count */
+  gap: 4px; /* Space between rows */
+}
+
+.files > div {
+  grid-column: 1 / -1; /* Full width */
+  display: grid;
+  grid-template-columns: subgrid; /* Use subgrid to align dt and dd */
+  gap: auto; /* Space between items */
+}
+
+.files dt {
+  grid-column: 1;
+  margin: 0;
+}
+
+.files dt small {
+  display: block;
+  font-size: 0.8em;
+  opacity: 0.7;
+  margin: 0;
+}
+
+.files dd {
+  grid-column: 2;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: start;
+  align-content: start;
+  gap: 0.15em;
+  padding-top: 0.6em;
+  margin-left: 0;
+}
+
+.line {
+  display: flex;
+  width: 0.5em;
+  aspect-ratio: 1;
+  /* background: steelblue; */
+  border-radius: 50%;
+}
+
 
 /* Styling for the meta page's tooltips */
 circle {
@@ -577,5 +622,29 @@ dl.info[hidden]:not(:hover, :focus-within) {
   stroke-opacity: 0.7;
   stroke-dasharray: 5 3;
   animation: marching-ants 2s linear infinite;
+}
+
+#commit-filter {
+  display: flex;
+  flex-direction: column; /* Stack elements vertically */
+  align-items: stretch; /* Make sure it takes full width */
+  gap: 5px;
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+#commit-filter label {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Space between text and slider */
+  width: 100%;
+}
+
+#commit-filter input[type="range"] {
+  flex-grow: 1; /* Allows slider to take up full width */
+}
+
+#commit-filter time {
+  align-self: flex-end; /* Moves the time label to the right */
 }
 

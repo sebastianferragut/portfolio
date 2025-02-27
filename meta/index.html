@@ -12,9 +12,15 @@
 <body> 
     <h1>Meta</h1>   
     <p>This page includes stats about the code of this website.</p>
-    <h2>Summary</h2>
-    <div id="stats"></div>
     <h2>Commits by time of day</h2>
+    <div id="commit-filter">
+        <label>Show commits until:
+            <input type="range" id="commit-slider" min="0" max="100" value="100">
+        </label>
+        <time id="selectedTime"></time>
+    </div>
+    <dl class="files"></dl>
+    <div id="stats"></div>
     <div id="chart"></div>
     <dl id="commit-tooltip" class="info tooltip">
         <dt>Commit</dt>
