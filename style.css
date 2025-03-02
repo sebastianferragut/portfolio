@@ -652,6 +652,47 @@ dl.info[hidden]:not(:hover, :focus-within) {
   max-width: min(120ch, 80vw);
 }
 
+/* Style file size scrollytelling */
+#files-scrollytelling {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px
+}
+
+/* Adjust scrolling behavior */
+#file-scroll-container {
+  grid-column: 2;
+  position: relative;
+  width: 95%;
+  height: 350px;
+  overflow-y: scroll;
+  border: 1px solid #ccc;
+  margin-bottom: 50px;
+}
+
+/* Spacer ensures scrolling without real content */
+#file-spacer {
+  width: 100%;
+  background: none;
+  pointer-events: none;
+}
+
+
+#file-items-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+.file-item {
+  height: 120px;
+  box-sizing: border-box;
+  border-bottom: 2px solid #eee;
+  position: absolute;
+}
+
 /* Scrollytelling for meta page styling */
 #scrollytelling {
   grid-column: 1 / -1;

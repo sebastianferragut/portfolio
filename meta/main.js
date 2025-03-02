@@ -2,6 +2,8 @@ let data = [];
 let commits = [];
 let selectedCommits = []; // Declare selectedCommits globally
 let filteredCommits = [];
+let filteredFileCommits = [];
+let filteredFileLines = [];
 let filteredLines = [];
 let fileTypeColors = d3.scaleOrdinal(d3.schemeTableau10);
 let xScale, yScale;
@@ -12,6 +14,7 @@ let VISIBLE_COUNT = 14; // Visible commits based on container height
 let totalHeight; // Total scrollable height 
 
 const itemsContainer = d3.select("#items-container");
+const fileItemsContainer = d3.select("#file-items-container");
 
 async function loadData() {
     data = await d3.csv('loc.csv', (row) => ({
@@ -103,6 +106,86 @@ document.addEventListener('DOMContentLoaded', async () => {
       .append('div')
       .attr('class', 'line')  // Assign class for styling
       .style('background', d => fileTypeColors(d.type)); 
+     
+    // Scrolling for file viz 
+    const fileScrollContainer = d3.select("#file-scroll-container");
+    const fileSpacer = d3.select("#file-spacer");
+ 
+    let NUM_ITEMS_FILES = commits.length; // Gets set to total number of files
+    let VISIBLE_COUNT_FILES = 14; // Visible files based on container height
+    let totalHeightFiles = (NUM_ITEMS_FILES - 1) * ITEM_HEIGHT; // Total scrollable height
+
+    fileSpacer.style("height", `${totalHeightFiles}px`);
+    filteredFileCommits = commits;
+    filteredFileCommits = data;
+    
+    let scrolledFiles = new Set();
+    // Initial render of scroll text for file viz
+    fileItemsContainer.selectAll('div')
+        .data(commits)
+        .enter()
+        .append('div')
+        .attr('class', 'file-item')
+        .html((commit, index) => {
+            let newFiles = d3
+                            .groups(commit.lines, (d) => d.file)
+                            .map(([name, lines]) => {
+                                return { name, lines };
+                            });
+            let newlyDisplayedFiles = newFiles
+            .map(file => file.name)
+            .filter(fileName => !scrolledFiles.has(fileName)); // Only files not in scrolledFiles
+
+            let displayedFiles = new Set(newlyDisplayedFiles);
+
+            // Update scrolledFiles with new ones
+            newlyDisplayedFiles.forEach(file => scrolledFiles.add(file));
+
+            return `
+                <p>
+                On ${commit.datetime.toLocaleString("en", { dateStyle: "short", timeStyle: "short" })}, I made 
+                <a href="${commit.url}" style="color:#0084ff;" target="_blank">
+                    ${index > 0 ? 'another commit' : 'my first commit to build the framework of this portfolio site'}
+                </a> , with ${commit.totalLines} lines edited across 
+                ${d3.rollups(commit.lines, D => D.length, d => d.file).length} files.
+                </p>
+                <p style="font-weight:bold; font-size: 12px;"> 
+                ${newlyDisplayedFiles.length > 0 ? `New files added: ${newlyDisplayedFiles.join(', ')}` : ''}
+                </p>
+            `;
+        })
+        .style('top', (_, idx) => `${idx * ITEM_HEIGHT}px`);
+    // Scroll handler that will call renderFileItems
+    fileScrollContainer.on("scroll", () => {
+        // Get current scroll position
+        const scrollTop = fileScrollContainer.property("scrollTop");
+        
+        let startIndex = Math.floor(scrollTop / ITEM_HEIGHT);
+        startIndex = Math.max(0, Math.min(startIndex, filteredFileCommits.length - VISIBLE_COUNT_FILES));
+
+        let scrolledCommits = Math.floor(scrollTop / ITEM_HEIGHT);
+        scrolledCommits = 3 + scrolledCommits;
+
+        let sliceEndIndex = scrolledCommits;
+        
+        if (scrollTop > 1190) {
+            sliceEndIndex = sliceEndIndex + 1;
+        } 
+
+        filteredFileCommits = commits.slice(0, sliceEndIndex);
+        filteredFileCommits = d3.sort(filteredFileCommits, (a, b) => d3.ascending(a.datetime, b.datetime));
+        filteredFileLines = data.filter(d => filteredFileCommits.some(commit => commit.id === d.commit));
+
+        // Update the visualizations
+        renderFileItems(sliceEndIndex); 
+
+        // Show date next to scrollbar
+        let dateText = filteredFileCommits[sliceEndIndex-1].datetime.toLocaleDateString("en", { month: "short", day: "numeric", year: "numeric" });
+        d3.select("#scroll-indicator").text(dateText);
+    });    
+    
+
+    // Scrolling for scatterplot
 
     // Select scrolling elements
     const scrollContainer = d3.select("#scroll-container");
@@ -115,23 +198,39 @@ document.addEventListener('DOMContentLoaded', async () => {
     // Set the height of the spacer to create the illusion of scrollable content
     spacer.style("height", `${totalHeight}px`);
 
+    let largestCommitLinesEdited = 0;
+    let largestCommitDate = '';
+
     // Initial render of scroll text
     itemsContainer.selectAll('div')
                   .data(commits)
                   .enter()
                   .append('div')
-                  .html((commit, index) => `
+                  .html((commit, index) => {
+                    // Update largest commit tracking
+                    if (commit.totalLines > largestCommitLinesEdited) {
+                        largestCommitLinesEdited = commit.totalLines;
+                        largestCommitDate = commit.datetime.toLocaleString("en", { dateStyle: "short", timeStyle: "short" });
+                    }
+            
+                    return `
                         <p>
-                        On ${commit.datetime.toLocaleString("en", { dateStyle: "full", timeStyle: "short" })}, I made 
+                        On ${commit.datetime.toLocaleString("en", { dateStyle: "short", timeStyle: "short" })}, I made 
                         <a href="${commit.url}" style="color:#0084ff;" target="_blank">
                             ${index > 0 ? 'another commit' : 'my first commit to build the framework of this portfolio site'}
                         </a> , with ${commit.totalLines} lines edited across 
-                        ${d3.rollups(commit.lines, D => D.length, d => d.file).length} files. 
+                        ${d3.rollups(commit.lines, D => D.length, d => d.file).length} files.
                         </p>
-                    `)
+                        ${commit.totalLines === largestCommitLinesEdited ? `
+                            <p style="font-weight:bold; font-size: 12px;">
+                                Largest commit so far on: ${largestCommitDate} with ${largestCommitLinesEdited} lines edited.
+                            </p>` : ''}
+                    `;
+                })
                   .style('position', 'absolute')
                   .style('top', (_, idx) => `${idx * ITEM_HEIGHT}px`)
-
+                  .style('box-sizing', 'border-box')
+                  .style('border-bottom', '2px solid #ddd')
     // Handle scrolling event
     scrollContainer.on("scroll", () => {
         // Get current scroll position
@@ -173,6 +272,12 @@ document.addEventListener('DOMContentLoaded', async () => {
     updateTooltipVisibility(false);
 });
 
+function renderFileItems(sliceEndIndex) {
+    const endIndex = sliceEndIndex;
+    let newCommitSlice = filteredFileCommits.slice(0, endIndex);
+    displayCommitFiles(newCommitSlice);
+}
+
 function renderItems(sliceEndIndex) {
     const endIndex = sliceEndIndex;
     let newCommitSlice = commits.slice(0, endIndex);
@@ -182,7 +287,7 @@ function renderItems(sliceEndIndex) {
     d3.select('.brush').call(d3.brush().clear);
     d3.select('.brush').remove();
     updateScatterPlot(newCommitSlice);
-    displayCommitFiles(newCommitSlice);
+    
 }
 
 function displayStats() {
@@ -236,10 +341,10 @@ function displayStats() {
 }
 
 function displayCommitFiles() {
-    let filteredLines = filteredCommits.flatMap(commit => commit.lines || []);
+    let filteredFileLines = filteredFileCommits.flatMap(commit => commit.lines || []);
     
     let files = d3
-      .groups(filteredLines, d => d.file)
+      .groups(filteredFileLines, d => d.file)
       .map(([name, lines]) => ({ name, lines }));    
 
     // Sort in descending order
