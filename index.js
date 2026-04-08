@@ -1,28 +1,24 @@
-import { fetchJSON, renderProjects, fetchGitHubData } from './global.js';
-const projects = await fetchJSON('./lib/projects.json');
-console.log(projects);
+import { fetchJSON, renderProjects } from "./global.js";
 
-// Display the latest 3 projects
-const latestProjects = projects.slice(0, 3);
+const featuredProjectsContainer = document.querySelector("[data-featured-projects]");
 
-const projectsContainer = document.querySelector('.projects');
-
-if (Array.isArray(latestProjects) && projectsContainer) {
-    renderProjects(latestProjects, projectsContainer, 'h2');
-} else {
-    console.error("Error rendering latest projects.");
-}
-
-const githubData = await fetchGitHubData('sebastianferragut');
-const profileStats = document.querySelector('#profile-stats');
-if (profileStats) {
-    profileStats.innerHTML = `
-          <dl>
-            <dt>Public Repos:</dt><dd>${githubData.public_repos}</dd>
-            <dt>Public Gists:</dt><dd>${githubData.public_gists}</dd>
-            <dt>Followers:</dt><dd>${githubData.followers}</dd>
-            <dt>Following:</dt><dd>${githubData.following}</dd>
-          </dl>
-      `;
+async function loadFeaturedProjects() {
+  if (!featuredProjectsContainer) {
+    return;
   }
 
+  try {
+    const projects = await fetchJSON("./lib/projects.json");
+    const featuredProjects = projects.filter((project) => project.featured);
+
+    renderProjects(featuredProjects, featuredProjectsContainer, {
+      detailed: false,
+      maxHighlights: 4
+    });
+  } catch (error) {
+    console.error(error);
+    featuredProjectsContainer.innerHTML = "<p>Project details are temporarily unavailable.</p>";
+  }
+}
+
+loadFeaturedProjects();

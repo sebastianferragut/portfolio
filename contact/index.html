@@ -1,20 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../style.css">
-    <script type="module" src="../global.js"></script>
-    <title>Contact</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Contact information for Sebastian Ferragut.">
+  <link rel="stylesheet" href="../style.css">
+  <title>Contact | Sebastian Ferragut</title>
 </head>
-<body> 
-    <h1>Contact</h1>   
-    <form action="mailto:ferragut.sebastian@gmail.com" method="GET">
-        <label for="subject">Subject:</label>
-        <input name="subject">
-        <label for="body">Message:</label>
-        <textarea name="body"> </textarea>
-        <button>Submit</button>
-    </form>
+<body>
+  <div class="page-shell">
+    <header class="site-header">
+      <a class="site-brand" href="../">Sebastian Ferragut</a>
+      <nav class="site-nav" aria-label="Primary">
+        <ul>
+          <li><a href="../">Home</a></li>
+          <li><a href="../projects/">Projects</a></li>
+          <li><a href="../resume/">Resume</a></li>
+          <li><a href="./" aria-current="page">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <section class="section-card page-intro">
+        <p class="eyebrow">Contact</p>
+        <h1>Direct contact links</h1>
+        <p class="lead">
+          Best way to reach me is by email. I’m also available through GitHub and LinkedIn.
+        </p>
+        <div class="contact-links stacked">
+          <a href="mailto:ferragut.sebastian@gmail.com">ferragut.sebastian@gmail.com</a>
+          <a href="https://github.com/sebastianferragut" target="_blank" rel="noreferrer">GitHub</a>
+          <a href="https://www.linkedin.com/in/sebastian-ferragut/" target="_blank" rel="noreferrer">LinkedIn</a>
+        </div>
+        <p class="contact-note">Thanks for taking a look at my work.</p>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p><a href="../meta/">Site meta</a></p>
+    </footer>
+  </div>
 </body>
 </html>

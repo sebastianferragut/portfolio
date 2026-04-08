@@ -1,55 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../style.css">
-    <script type="module" src="../global.js"></script>
-    <script type="module" src="main.js"></script>
-    <script src="https://d3js.org/d3.v7.min.js"></script>
-    <title>Meta</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../style.css">
+  <script type="module" src="main.js"></script>
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <title>Site Meta | Sebastian Ferragut</title>
 </head>
-<body class="meta-page"> 
-    <h1>Meta</h1>   
-    <p>This page includes stats about the code of this website.</p>
-    <h2>Files By Commits</h2>
-    <div id="files-scrollytelling">
-        <dl class="files"></dl>
-        <div id="file-scroll-container">
+<body class="meta-page">
+  <div class="page-shell">
+    <header class="site-header">
+      <a class="site-brand" href="../">Sebastian Ferragut</a>
+      <nav class="site-nav" aria-label="Primary">
+        <ul>
+          <li><a href="../">Home</a></li>
+          <li><a href="../projects/">Projects</a></li>
+          <li><a href="../resume/">Resume</a></li>
+          <li><a href="../contact/">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <section class="section-card page-intro">
+        <p class="eyebrow">Meta</p>
+        <h1>Site meta</h1>
+        <p class="lead">This page includes code and commit visualizations for the portfolio itself.</p>
+      </section>
+
+      <section class="section-card">
+        <h2>Files By Commits</h2>
+        <div id="files-scrollytelling">
+          <dl class="files"></dl>
+          <div id="file-scroll-container">
             <div id="file-spacer"></div>
             <div id="file-items-container"></div>
+          </div>
         </div>
-    </div>
-    
-    <h2>Commits by time of day</h2>
-    <div id="stats"></div>
-    <div id="scroll-indicator"></div>
-    <div id="scrollytelling">
-        <div id="scroll-container">
+      </section>
+
+      <section class="section-card">
+        <h2>Commits by time of day</h2>
+        <div id="stats"></div>
+        <div id="scroll-indicator"></div>
+        <div id="scrollytelling">
+          <div id="scroll-container">
             <div id="spacer"></div>
             <div id="items-container"></div>
+          </div>
+          <div id="chart"></div>
         </div>
-        <div id="chart"></div>
-    </div>
-    <dl id="commit-tooltip" class="info tooltip">
-        <dt>Commit</dt>
-        <dd>
-          <a href="" id="commit-link" target="_blank"></a>
-        </dd>
-      
-        <dt>Date</dt>
-        <dd id="commit-date"></dd>
-      
-        <dt>Time</dt>
-        <dd id="commit-time"></dd>
-      
-        <dt>Author</dt>
-        <dd id="commit-author"></dd>
-      
-        <dt>Lines Edited</dt>
-        <dd id="commit-lines-edited"></dd>
-    </dl>
-    <p id="selection-count">No commits selected</p>
-    <dl id="language-breakdown" class="stats"></dl>
+        <dl id="commit-tooltip" class="info tooltip">
+          <dt>Commit</dt>
+          <dd><a href="" id="commit-link" target="_blank" rel="noreferrer"></a></dd>
+          <dt>Date</dt>
+          <dd id="commit-date"></dd>
+          <dt>Time</dt>
+          <dd id="commit-time"></dd>
+          <dt>Author</dt>
+          <dd id="commit-author"></dd>
+          <dt>Lines Edited</dt>
+          <dd id="commit-lines-edited"></dd>
+        </dl>
+        <p id="selection-count">No commits selected</p>
+        <dl id="language-breakdown" class="stats"></dl>
+      </section>
+    </main>
+  </div>
 </body>
 </html>

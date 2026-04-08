@@ -1,75 +1,110 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../style.css">
-    <script type="module" src="../global.js"></script>
-    <title>CV</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Resume overview for Sebastian Ferragut, UC San Diego Data Science student.">
+  <link rel="stylesheet" href="../style.css">
+  <title>Resume | Sebastian Ferragut</title>
 </head>
-<body>  
-    <h1>CV</h1>
-    <div class="cv">
-        <article>
-            <h2>Sebastian Ferragut</h2>
-            <h3>Data Scientist</h3>
+<body>
+  <div class="page-shell">
+    <header class="site-header">
+      <a class="site-brand" href="../">Sebastian Ferragut</a>
+      <nav class="site-nav" aria-label="Primary">
+        <ul>
+          <li><a href="../">Home</a></li>
+          <li><a href="../projects/">Projects</a></li>
+          <li><a href="./" aria-current="page">Resume</a></li>
+          <li><a href="../contact/">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main class="resume-page">
+      <section class="section-card page-intro">
+        <p class="eyebrow">Resume</p>
+        <h1>Resume-ready overview</h1>
+        <p class="lead">
+          This page is structured for final resume integration and already captures the core information a recruiter should see:
+          education, technical skills, and selected project experience.
+        </p>
+      </section>
+
+      <section class="section-card download-panel">
+        <div>
+          <h2>Downloadable PDF</h2>
+          <p>A final polished resume PDF will be linked here once the rewritten version is ready.</p>
+        </div>
+        <div class="button-row">
+          <span class="button button-disabled" aria-disabled="true">Resume PDF Coming Soon</span>
+          <a class="button button-secondary" href="../contact/">Contact Me</a>
+        </div>
+      </section>
+
+      <section class="resume-layout">
+        <article class="section-card">
+          <h2>Professional Summary</h2>
+          <p>
+            UC San Diego Data Science student with project experience in data analysis, statistical evaluation, interactive visualization, and privacy-focused AI applications.
+            Interested in building analytical workflows and polished tools that make technical work easier to understand and use.
+          </p>
         </article>
 
-        <section>
-            <div class="cv-links">
-                <a href="../contact/index.html">ferragut.sebastian@gmail.com</a>
-                <a href="https://www.linkedin.com/in/sebastian-ferragut/" target="_blank" >LinkedIn</a>
-                <a href="https://github.com/sebastianferragut" target="_blank" >GitHub</a>
+        <article class="section-card">
+          <h2>Education</h2>
+          <div class="resume-entry">
+            <h3>University of California, San Diego</h3>
+            <p>B.S. in Data Science</p>
+            <p>Expected graduation: 2026</p>
+          </div>
+        </article>
+
+        <article class="section-card">
+          <h2>Technical Skills</h2>
+          <div class="skills-grid compact">
+            <article class="mini-card">
+              <h3>Programming</h3>
+              <p>Python, JavaScript, HTML, CSS</p>
+            </article>
+            <article class="mini-card">
+              <h3>Data Work</h3>
+              <p>Pandas, Jupyter, data analysis, statistical analysis, reproducible notebook workflows</p>
+            </article>
+            <article class="mini-card">
+              <h3>Visualization and Tools</h3>
+              <p>D3.js, Chainlit, React, Docker, GitHub Pages</p>
+            </article>
+          </div>
+        </article>
+
+        <article class="section-card">
+          <h2>Selected Projects</h2>
+          <div class="resume-projects">
+            <div class="resume-entry">
+              <h3><a href="../projects/#dsc180-privacy-project">Privacy-Preserving Data Analysis (DSC180 Capstone)</a></h3>
+              <p>Research project on how privacy-preserving methods affect data utility, statistical inference, and reproducible analysis workflows.</p>
             </div>
-        </section>
-        
-        <section>
-            <h3>Technical Skills and Knowledge</h3>
-            <p>
-                Data Management in Pandas, Data Cleaning and Exploration, Hypothesis and Permutation Testing, Imputation and Missingness Analysis, Regular Expressions, Text Feature Analysis, Linear Regression, Feature Engineering, Generalization and Cross-Validation, Predictive Modeling, Data Visualization
-            </p>
-        </section>
+            <div class="resume-entry">
+              <h3><a href="../projects/#mice-explorable">Interactive MICE Dataset Visualization</a></h3>
+              <p>D3.js-based visualization project presenting protein expression data through exploratory and narrative web interfaces.</p>
+            </div>
+            <div class="resume-entry">
+              <h3><a href="../projects/#cogs108-group-project">COGS108 Data Science Group Project</a></h3>
+              <p>Team project covering data cleaning, exploratory analysis, hypothesis testing, and notebook-based reporting.</p>
+            </div>
+            <div class="resume-entry">
+              <h3><a href="../projects/#local-clinical-documentation-ai">Local-First Clinical Documentation Assistant</a></h3>
+              <p>Privacy-focused AI application for generating structured therapy documentation with local models and local processing.</p>
+            </div>
+          </div>
+        </article>
+      </section>
+    </main>
 
-        <section>
-            <h3>Languages</h3>
-            <p>
-                Python, Java, JavaScript, HTML, CSS, Fluent Spanish & English
-            </p>
-        </section>
-
-        <section>
-            <h3>Projects</h3>
-            <article>
-                <h4><a href="https://sebastianferragut.github.io/U.S.-Power-Outage-Analysis/" target="_blank" >Analyzing US Power Outages</a></h4>
-                <p>
-                    | Tech Stack: Python, HTML
-                    Performed full analysis of over a decade of data to understand impact of various factors on outages
-                    Engineered and analyzed a baseline and final model to predict causes of outages, complete with fairness analysis 
-                    Visualized exploration of data and analysis with various graphs to effectively communicate results 
-                </p>
-            </article>
-            <article>
-                <h4><a href="../projects/index.html" target="_blank" >Other Projects</a></h4>
-            </article>
-        </section>
-        
-        <section>
-            <h3>Education</h3>
-            <article>
-                <h4>Great Oak High School</h4>
-                <p>
-                    High School and IB Diploma<br>
-                    <time datetime="2022-06">Graduated 06/2022</time>
-                </p>
-            </article>
-            <article>
-                <h4>University of California, San Diego</h4>
-                <p>
-                    Data Science Major<br>
-                    <time datetime="2026-06">Expected Graduation 06/2026</time>
-                </p>
-            </article>
-        </section>
-    </div>
+    <footer class="site-footer">
+      <p><a href="../meta/">Site meta</a></p>
+    </footer>
+  </div>
 </body>
 </html>

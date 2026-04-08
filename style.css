@@ -1,756 +1,633 @@
 :root {
-  --color-accent: oklch(65% 20% 240); /* Middle blue */
+  --bg: #f5f7fa;
+  --surface: #ffffff;
+  --surface-subtle: #f8fafc;
+  --border: #d7dee7;
+  --border-strong: #bcc7d4;
+  --text: #0f172a;
+  --muted: #334155;
+  --accent: #0f4c81;
+  --accent-dark: #0b3a61;
+  --accent-soft: #e8f1f8;
+  --shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.04);
+  --shadow-md: 0 10px 24px rgba(15, 23, 42, 0.06);
+  --radius-lg: 16px;
+  --radius-md: 12px;
+  --radius-sm: 8px;
+  --max-width: 1080px;
+  --font-sans: "Avenir Next", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  --font-serif: Georgia, "Times New Roman", serif;
 }
 
-/* Apply light or dark theme based on OS color scheme */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 html {
-  color-scheme: light dark;
+  scroll-behavior: smooth;
 }
 
-/* Light theme (when data-theme="light") */
-html[data-theme="light"] {
-  color-scheme: light;
-  background-color: white;
-  color: black;
-}
-
-html[data-theme="light"] nav {
-  background-color: white; /* Light background for the nav */
-}
-
-html[data-theme="light"] body {
-  background-color: white;
-  color: black;
-}
-
-/* Dark theme (when data-theme="dark") */
-html[data-theme="dark"] {
-  color-scheme: dark;
-  background-color: #121212;
-  color: white;
-}
-
-html[data-theme="dark"] nav {
-  background-color: #333; /* Darker nav background */
-}
-
-html[data-theme="dark"] body {
-  background-color: #121212; /* Dark background */
-  color: white; /* Light text color */
-}
-
-/* If using OS preference for automatic theme, it will default to the appropriate color scheme */
-html[data-theme="auto"] {
-  color-scheme: light dark;
-}
-
-/* Default styling for light mode (or the fallback mode) */
 body {
-  background-color: white;
-  color: black;
+  margin: 0;
+  min-height: 100vh;
+  color: var(--text);
+  font-family: var(--font-sans);
+  line-height: 1.6;
+  background: var(--bg);
 }
 
-/* Dark mode styling */
-@media (prefers-color-scheme: dark) {
-  body {
-    background-color: #121212; /* Dark background */
-    color: white; /* Light text color */
-  }
-
-  nav {
-    background-color: #333; /* Darker nav */
-  }
-
-  a {
-    color: #bbb; /* Lighter link color */
-  }
-
-  a.current {
-    color: #0084ff; /* Highlight current link */
-  }
+img {
+  display: block;
+  max-width: 100%;
 }
 
-
-/* Style for the color-scheme label */
-.color-scheme {
-  position: absolute;
-  top: 1rem;  /* Adjust this value as needed */
-  right: 1rem;  /* Adjust this value as needed */
-  font-size: 70%;  /* Make the font size smaller */
-  font-family: inherit;  /* Inherit the font-family from the parent element */
-  background-color: transparent;  /* Optional: make the background transparent */
-  z-index: 1000;  /* Ensure it's on top of other elements */
+a {
+  color: var(--accent);
+  text-underline-offset: 0.16em;
 }
 
-/* Ensure the select dropdown matches the font family */
-#color-scheme-selector {
-  font-family: inherit;
-  font-size: 0.7rem;
-  padding: 0.5em;
-  cursor: pointer;
+a:hover {
+  color: var(--accent-dark);
 }
 
-
-
-/* Body styles */
-body {
-  font: 100%/1.5 system-ui;
-  max-width: 100ch;
-  margin-inline: auto;
-  padding-inline: 1em;
-  accent-color: var(--color-accent); 
+p,
+ul,
+dl {
+  margin: 0;
 }
 
-/* Navigation bar styles */
-nav {
-  display: flex; /* Enable Flexbox layout */
-  margin-bottom: 1em; /* Separate nav from content */
-  --border-color: oklch(50% 10% 200 / 40%); /* Semi-transparent border color */
-  border-bottom: 1px solid var(--border-color); /* Use the variable */
+h1,
+h2,
+h3 {
+  margin: 0;
+  line-height: 1.15;
+  color: var(--text);
+  text-wrap: balance;
 }
 
-nav ul {
-  display: contents;
+h1,
+h2 {
+  font-family: var(--font-serif);
 }
 
-nav ul li {
-  display: contents;
+.page-shell {
+  width: min(100% - 2rem, var(--max-width));
+  margin: 0 auto;
+  padding: 1.25rem 0 3rem;
 }
 
-nav a {
-  flex: 1; /* Each link takes up equal space */
-  text-decoration: none; /* Remove underline from links */
-  color: inherit; /* Use the same text color as the parent */
-  text-align: center; /* Center text in its box */
-  padding: 0.5em; /* Add spacing inside each link */
-  transition: all 0.3s; /* Smooth hover transitions */
-}
-
-nav a:hover {
-  background-color: color-mix(in oklch, var(--color-accent), canvas 85%); /* Improved background color mix */
-  border-bottom: 0.4em solid var(--color-accent); /* Accent color for hover effect */
-}
-
-nav a.current {
-  border-bottom: 0.4em solid oklch(85% 2% 200); /* Highlight for current page link */
-  padding-bottom: 0.1em; /* Adjust padding to counter border size */
-}
-
-/* Form styles */
-form {
-  display: grid; /* Enable grid layout */
-  grid-template-columns: auto 1fr; /* Two columns: labels auto-sized, inputs fill remaining space */
-  gap: 1em; /* Add spacing between rows and columns */
-}
-
-form label {
-  grid-column: 1; /* Place labels in the first column */
-}
-
-form input,
-form textarea,
-form button {
-  font: inherit; /* Use the same font as the rest of the page */
-  grid-column: 2; /* Place controls in the second column */
-  width: 100%; /* Fill the available space in their grid cell */
-  box-sizing: border-box; /* Include padding and borders in width calculation */
-}
-
-form button {
-  grid-column: 1 / -1; /* Make the button span across both columns */
-}
-
-/* Projects grid container */
-.projects {
-  display: grid; /* Enable grid layout */
-  grid-template-columns: repeat(auto-fill, minmax(15em, 1fr)); /* Responsive columns */
-  gap: 1.5em; /* Add spacing between grid items */
-  padding: 1em; /* Add some padding inside the container */
-}
-
-/* Projects image styling */
-.projects img {
-  width: 100%; /* Adjust width to 100% of the container's width */
-  height: auto; /* Maintain aspect ratio */
-  max-width: 400px; /* Maximum width for the image */
-  max-height: 400px; /* Maximum height for the image */
-  object-fit: cover; /* Ensures the image covers the area without distortion */
-}
-
-/* Individual project card styling */
-.projects article {
-  display: grid; /* Make each article a grid */
-  grid-template-rows: auto; /* Align rows with the parent grid */
-  gap: 1em; /* Space out items inside the article */
-  padding: 1em; /* Add padding inside each article */
-}
-
-/* Headings for project cards */
-.projects article h2 {
-  margin: 0; /* Remove extra margin for consistent spacing */
-  font-size: 1.5em; /* Distinguish <h2> size from the body text */
-  line-height: 1.1; /* Tighter spacing for headings */
-  text-wrap: balance; /* Prevent uneven lines */
-}
-
-/* Styling for project links */
-.project-link-wrapper {
-  display: flex; /* Arrange links in a row */
-  flex-wrap: wrap; /* Allow links to wrap to the next line if necessary */
-  gap: .5em; /* Space between the links */
-  max-width: 250px; /* Set a max width for the wrapper */
-  margin: 0 auto; /* Center the wrapper */
-}
-
-.project-link-wrapper a {
-  display: block; /* Make each link a block-level element */
-  width: 100%; /* Allow each link to take up full width within the wrapper */
-  text-decoration: none;
-  color: var(--color-accent);
-  padding: 0.5em .75em;
-  background-color: rgba(0, 0, 0, 0.05);
-  border-radius: 0.3em;
-  transition: all 0.3s ease;
-}
-
-.project-link-wrapper a:hover {
-  background-color: var(--color-accent); /* Background on hover */
-  color: white; /* Text color on hover */
-  border-color: var(--color-accent); /* Border color on hover */
-}
-
-.project-details {
+.site-header {
   display: flex;
-  flex-direction: column;
-  gap: 0.5em;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--border-strong);
+}
+
+.site-brand {
+  color: var(--text);
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  text-decoration: none;
+}
+
+.site-nav ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.site-nav a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.55rem 0.85rem;
+  color: var(--muted);
+  font-weight: 500;
+  text-decoration: none;
+  border-radius: var(--radius-sm);
+  transition: color 140ms ease, background-color 140ms ease;
+}
+
+.site-nav a:hover,
+.site-nav a[aria-current="page"] {
+  color: var(--text);
+  background: var(--surface);
+}
+
+main {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.hero,
+.section-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+}
+
+.hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1.7fr) minmax(260px, 0.9fr);
+  gap: 2rem;
+  padding: 2.25rem;
+}
+
+.hero-copy {
+  display: grid;
+  gap: 1rem;
+  align-content: center;
+}
+
+.hero h1 {
+  font-size: clamp(2.7rem, 5vw, 4.25rem);
+}
+
+.hero-intro,
+.lead {
+  max-width: 64ch;
+  color: var(--muted);
+  font-size: 1.05rem;
+}
+
+.eyebrow {
+  color: var(--accent);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.button-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.8rem;
+  padding: 0.72rem 1rem;
+  color: #ffffff;
+  font-weight: 600;
+  text-decoration: none;
+  background: var(--accent);
+  border: 1px solid var(--accent);
+  border-radius: var(--radius-sm);
+  box-shadow: none;
+}
+
+.button:hover {
+  background: var(--accent-dark);
+  border-color: var(--accent-dark);
+  color: #ffffff;
+}
+
+.button.button-secondary {
+  color: var(--accent);
+  background: var(--surface);
+  border-color: var(--accent);
+}
+
+.button.button-secondary:hover {
+  color: #ffffff;
+  background: var(--accent);
+}
+
+.button.button-disabled {
+  color: var(--muted);
+  background: var(--surface-subtle);
+  border-color: var(--border-strong);
+  cursor: not-allowed;
+}
+
+.hero-panel {
+  display: grid;
+  gap: 1rem;
+  padding: 1.1rem;
+  background: var(--surface-subtle);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+}
+
+.portrait {
+  aspect-ratio: 4 / 5;
+  width: 100%;
+  object-fit: cover;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+}
+
+.hero-facts {
+  display: grid;
+  gap: 0.9rem;
+}
+
+.hero-facts div {
+  padding-top: 0.9rem;
+  border-top: 1px solid var(--border);
+}
+
+.hero-facts dt {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.hero-facts dd {
+  margin: 0.3rem 0 0;
+  color: var(--text);
+}
+
+.section-card {
+  display: grid;
+  gap: 1.25rem;
+  padding: 1.8rem;
+}
+
+.section-heading {
+  display: grid;
+  gap: 0.4rem;
+}
+
+.section-heading p:last-child {
+  color: var(--muted);
+}
+
+.split-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+  gap: 1.5rem;
+  align-items: start;
+}
+
+.focus-grid,
+.skills-grid,
+.project-grid,
+.resume-layout,
+.resume-projects,
+.project-list {
+  display: grid;
+  gap: 1rem;
+}
+
+.focus-grid,
+.skills-grid.compact {
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.skills-grid {
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+.project-grid {
+  grid-template-columns: repeat(auto-fit, minmax(255px, 1fr));
+}
+
+.project-list {
+  grid-template-columns: 1fr;
+}
+
+.resume-layout {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.mini-card,
+.project-card,
+.download-panel {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+}
+
+.mini-card {
+  padding: 1.15rem;
+}
+
+.mini-card h3 {
+  margin-bottom: 0.35rem;
+  font-size: 1.02rem;
+}
+
+.mini-card p,
+.resume-entry p,
+.project-summary {
+  color: var(--muted);
+}
+
+.project-card {
+  display: grid;
+  gap: 0.95rem;
+  padding: 1.35rem;
+}
+
+.project-card-detailed {
+  padding: 1.6rem;
+}
+
+.project-card-header {
+  display: grid;
+  gap: 0.55rem;
+}
+
+.project-card-header h2,
+.project-card-header h3 {
+  font-size: 1.35rem;
+}
+
+.project-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.project-year,
+.project-badge,
+.tag {
+  display: inline-flex;
+  align-items: center;
+  min-height: 1.9rem;
+  padding: 0.25rem 0.65rem;
+  font-size: 0.84rem;
+  border-radius: var(--radius-sm);
 }
 
 .project-year {
-  font-weight: bold;
-  color: var(--color-secondary);
-  font-size: 0.9em;
+  color: var(--muted);
+  background: var(--surface-subtle);
+  border: 1px solid var(--border);
 }
 
-#projects-plot {
-  max-width: 20em;
-  margin-block: 2em;
-  overflow: visible;
+.project-badge {
+  color: var(--accent);
+  background: var(--accent-soft);
+  border: 1px solid #c8daea;
+  font-weight: 700;
 }
 
-/* Make pie chart wedges clickable */
-path {
-  cursor: pointer;
-  transition: opacity 300ms ease-in-out;
+.tag-list,
+.highlight-list {
+  padding: 0;
+  list-style: none;
 }
 
-/* Highlight hovered wedge and fade out others */
-svg:has(path:hover) path:not(:hover) {
-  opacity: 0.5;
-}
-
-/* Styling for the selected wedge */
-.selected {
-  --color: oklch(60% 45% 0) !important;
-}
-
-.selected:is(path) {
-  fill: var(--color);
-}
-
-/* Highlight the selected legend item */
-.selected:is(li) {
-  font-weight: bold;
-  background-color: rgba(0, 0, 0, 0.1);
-}
-
-
-/* Style the legend grid */
-.legend {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(9em, 1fr)); /* Responsive grid */
-  gap: 1em; /* Space between items */
-  margin-top: 1em;
-  padding: 1em;
-  border: 1px solid #ddd; /* Border around the legend */
-  border-radius: 8px;
-  background-color: var(--color);
-  list-style-type: none;
-  flex: 1;
-}
-
-/* Style each list item in the legend */
-.legend-item {
-  display: flex;  /* Flex layout for the item */
-  align-items: center;  /* Vertically center the items */
-  justify-content: flex-start;
-  gap: .75em;  /* Space between the swatch and the label */
-  font-size: 14px;
-}
-
-/* Style the swatch to look like a colored box */
-.swatch {
-  display: inline-block;
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;  /* Make it round */
-  background-color: var(--color);  /* Use the custom color */
-  vertical-align: middle;  
-}
-
-.legend-item em {
-  font-style: italic;
-  color: #666;
-}
-
-.container {
-  display: flex;
-  align-items: center;
-  gap: 2em;
-}
-
-.search-container {
-  display: flex;
-  align-items: center; /* Aligns search bar and any buttons/icons */
-  width: 100%; /* Ensures full width */
-  padding: 10px;
-  background-color: var(--color); 
-  border-radius: 8px; /* Smooth rounded corners */
-}
-
-.searchBar {
-  flex: 1; /* Allows it to take up available space */
-  padding: 8px 12px;
-  font-size: 16px;
-  border: 1px solid var(--color);
-  border-radius: 5px;
-  outline: none; /* Removes default blue highlight */
-  transition: all 0.3s ease-in-out;
-}
-
-.searchBar:focus {
-  border-color: #007bff; /* Highlight border when active */
-  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
-}
-
-/* Style the clear button */
-.clear-btn {
-  position: absolute;
-  right: 15px; /* Adjust position */
-  background: transparent;
-  border: none;
-  font-size: 18px;
-  color: #aaa;
-  cursor: pointer;
-  display: none; /* Initially hidden */
-}
-
-.clear-btn:hover {
-  color: #555;
-}
-
-
-
-
-
-/* CV grid container */
-.cv {
-  display: grid; /* Enable grid layout */
-  grid-template-columns: 1fr; /* Single column by default */
-  gap: 2em; /* Space between sections */
-  margin-inline: auto; /* Center content */
-}
-
-/* CV section styling */ 
-.cv section {
-  display: grid;
-  grid-template-columns: 1fr; /* Single column by default */
-  gap: .1em;
-}
-
-.cv section a{
-  text-decoration: none;
-  color: var(--color-accent);
-  padding: 0.5em 1em;
-  background-color: rgba(0, 0, 0, 0.05);
-  border-radius: 0.3em;
-  margin-right: 0.5em;
-  transition: all 0.3s ease;
-}
-
-.cv section a:hover{
-  background-color: var(--color-accent);
-  color: white;
-}
-
-/* Style for the link wrapper */
-.cv .link-wrapper {
-  display: flex; /* Arrange links in a row */
-  flex-wrap: wrap; /* Allow links to wrap to the next line if necessary */
-  gap: 1em; /* Space between the links */
-  max-width: 500px; /* Set a max width for the wrapper */
-  margin: 0 auto; /* Center the wrapper */
-}
-
-/* Ensure all links inside the wrapper have the same width */
-.cv .link-wrapper a {
-  display: block; /* Make each link a block-level element */
-  width: 100%; /* Allow each link to take up full width within the wrapper */
-  text-decoration: none;
-  color: var(--color-accent);
-  padding: 0.5em 1em;
-  background-color: rgba(0, 0, 0, 0.05);
-  border-radius: 0.3em;
-  transition: all 0.3s ease;
-}
-
-/* CV article styling */
-.cv article h2 {
-  font-size: 2em; /* Slightly larger than h1 for prominence */
-  font-weight: bold;
-}
-
-.cv h3 {
-  margin-bottom: 0.005em;
-}
-
-
-/* Add general heading styles */
-h1, h2, h3, h4, h5, h6 {
-  line-height: 1.1; /* Consistent tighter leading for all headings */
-  text-wrap: balance; /* Balance lines for all headings */
-}
-
-/* Specific styling for <h1> to enhance hierarchy */
-h1 {
-  font-size: 400%; /* Significantly larger than body text for contrast */
-  margin-bottom: 0.5em; /* Space below the <h1> */
-}
-
-/* Styling homepage GitHub stats */
-#profile-stats dl {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);  /* Four equal-sized columns */
-  gap: 10px;  /* Space between grid items */
-}
-
-#profile-stats dt {
-  grid-row: 1;  /* Place <dt> elements on the first row */
-  color: #aaa; /* Light gray color */
-  font-weight: bold;
-}
-
-#profile-stats dd {
-  grid-row: 2;  /* Place <dd> elements on the second row */
-  font-weight: bold;
-}
-
-#profile-stats dt, #profile-stats dd {
-  padding: 5px;
-  text-align: center;  /* Center align text */
-}
-
-#profile-stats dl dt {
-  text-transform: uppercase;  
-  font-size: 1em;
-}
-
-#profile-stats dl dd {
-  font-size: 1em;
-}
-
-
-/* Styling for .stats on the meta page */
-.stats {
-  display: grid;
-  grid-template-columns: repeat(6, 1fr); 
-  gap: 5px; /* Space between items */
-  /* border: 1px solid; Adjust color and thickness as needed */
-  padding: 10px; /* Add some spacing inside the border */
-  border-radius: 8px; /* Optional: Rounds the corners */
-}
-
-/* Column titles */
-.stats dt {
-  grid-row: 1; /* Place titles in the first row */
-  font-size: 0.75rem; /* Smaller font for titles */
-  text-transform: uppercase;
-  color: #aaa; /* Light gray color */
-  font-weight: bold;
-  text-align: left;
-}
-
-.stats dt, dd {
-  display: block;
-  text-align: left;
-}
-
-/* Stat values */
-.stats dd {
-  grid-row: 2;
-  font-size: 1.05rem; /* Larger font for stats */
-  text-align: left;
-  margin: 0; /* Remove default margin */
-}
-
-/* Ensure dt and dd are arranged in rows */
-.stats dl {
-  display: contents; /* Allows dt and dd to be part of the same grid */
-}
-
-/* Styling for the meta page's gridlines */
-.gridlines line {
-  stroke: rgba(0, 0, 0, 0.1); /* Light gray for a subtle look */
-  stroke-width: 0.5;
-}
-
-/* Style for unit visualizations */
-.files {
-  display: grid;
-  grid-template-columns: 200px auto; /* Two columns: filename | line count */
-  gap: 4px; /* Space between rows */
-}
-
-.files > div {
-  grid-column: 1 / -1; /* Full width */
-  display: grid;
-  grid-template-columns: subgrid; /* Use subgrid to align dt and dd */
-  gap: auto; /* Space between items */
-}
-
-.files dt {
-  grid-column: 1;
-  margin: 0;
-}
-
-.files dt small {
-  display: block;
-  font-size: 0.8em;
-  opacity: 0.7;
-  margin: 0;
-}
-
-.files dd {
-  grid-column: 2;
+.tag-list {
   display: flex;
   flex-wrap: wrap;
-  align-items: start;
-  align-content: start;
-  gap: 0.15em;
-  padding-top: 0.6em;
-  margin-left: 0;
+  gap: 0.5rem;
 }
 
-.line {
+.tag {
+  color: var(--text);
+  background: var(--surface-subtle);
+  border: 1px solid var(--border);
+}
+
+.highlight-list {
+  display: grid;
+  gap: 0.6rem;
+}
+
+.highlight-list li {
+  margin-left: 1.15rem;
+  color: var(--muted);
+  padding-left: 0.1rem;
+}
+
+.project-links,
+.contact-links {
   display: flex;
-  width: 0.5em;
-  aspect-ratio: 1;
-  /* background: steelblue; */
-  border-radius: 50%;
+  flex-wrap: wrap;
+  gap: 0.75rem;
 }
 
-
-/* Styling for the meta page's tooltips */
-circle {
-  transition: 200ms;
-  transform-origin: center;
-  transform-box: fill-box;
+.project-note,
+.contact-note {
+  color: var(--muted);
 }
 
-circle:hover {
-  transform: scale(1.5);
+.page-intro {
+  gap: 0.85rem;
 }
 
-circle.selected {
-  fill: #ff6b6b;
+.resume-page,
+.resume-entry,
+.resume-projects {
+  display: grid;
+  gap: 1rem;
 }
 
-/* Style for the tooltip container */
-#commit-tooltip {
-  position: fixed; /* Stay in place while scrolling */
-  top: 1em;
-  left: 1em;
-  border-radius: 8px; /* Rounded corners */
-  padding: .5em; /* Add some padding inside the tooltip */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow for elevation */
-  backdrop-filter: blur(8px); /* Optional: frosted glass effect */
-  pointer-events: none; /* Prevent it from blocking mouse events */
-  opacity: 0; /* Initially hidden */
-  visibility: hidden; /* Initially hidden */
-  transition: opacity 0.2s ease-in-out, visibility 0.2s ease-in-out; /* Smooth transition for fade in/out */
-  width: 200px;
-  font-size: 12px;
+.resume-entry h3 {
+  margin-bottom: 0.3rem;
+  font-size: 1.02rem;
 }
 
-/* Style for the tooltip when visible */
-#commit-tooltip:not([hidden]) {
-  opacity: 1; /* Make it visible */
-  visibility: visible; /* Make it visible */
-}
-
-/* Style for the tooltip's labels and values */
-#commit-tooltip dt {
-  font-weight: bold;
-  margin-bottom: 5px;
-}
-
-#commit-tooltip dd {
-  margin: 0 0 10px 0;
-  padding-left: 10px;
-}
-
-dl.info {
-  /* ... other styles ... */
-  transition-duration: 500ms;
-  transition-property: opacity, visibility;
-}
-
-dl.info[hidden]:not(:hover, :focus-within) {
-  opacity: 0;
-  visibility: hidden;
-}
-
-/* Brush styling for the meta page */
-@keyframes marching-ants {
-  to {
-    stroke-dashoffset: -8; /* 5 + 3 */
-  }
-}
-
-.selection {
-  fill-opacity: 0.1;
-  stroke: black;
-  stroke-opacity: 0.7;
-  stroke-dasharray: 5 3;
-  animation: marching-ants 2s linear infinite;
-}
-
-#commit-filter {
-  display: flex;
-  flex-direction: column; /* Stack elements vertically */
-  align-items: stretch; /* Make sure it takes full width */
-  gap: 5px;
-  margin-bottom: 10px;
-  width: 100%;
-}
-
-#commit-filter label {
+.download-panel {
   display: flex;
   align-items: center;
-  gap: 10px; /* Space between text and slider */
-  width: 100%;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.35rem 1.45rem;
 }
 
-#commit-filter input[type="range"] {
-  flex-grow: 1; /* Allows slider to take up full width */
+.contact-links a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.7rem;
+  padding: 0.68rem 0.95rem;
+  color: var(--accent);
+  font-weight: 600;
+  text-decoration: none;
+  background: var(--surface);
+  border: 1px solid var(--accent);
+  border-radius: var(--radius-sm);
 }
 
-#commit-filter time {
-  align-self: flex-end; /* Moves the time label to the right */
+.contact-links a:hover {
+  color: #ffffff;
+  background: var(--accent);
 }
 
-.meta-page {
-  max-width: min(120ch, 80vw);
-}
-
-/* Style file size scrollytelling */
-#files-scrollytelling {
-  grid-column: 1 / -1;
+.contact-links.stacked {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 20px
+  gap: 0.75rem;
 }
 
-/* Adjust scrolling behavior */
+.site-footer {
+  padding-top: 1.25rem;
+  text-align: right;
+}
+
+.site-footer a {
+  color: var(--muted);
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 0.75rem;
+}
+
+.stats dt {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.stats dd {
+  margin: 0.2rem 0 0;
+}
+
+#scrollytelling,
+#files-scrollytelling {
+  display: grid;
+  grid-template-columns: minmax(240px, 320px) minmax(0, 1fr);
+  gap: 1rem;
+}
+
+#scroll-container,
 #file-scroll-container {
-  grid-column: 2;
   position: relative;
-  width: 95%;
-  height: 350px;
-  overflow-y: scroll;
-  border: 1px solid #ccc;
-  margin-bottom: 50px;
+  max-height: 30rem;
+  overflow: auto;
+  padding-right: 0.5rem;
 }
 
-/* Spacer ensures scrolling without real content */
+#chart,
+.files,
+.tooltip {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+}
+
+#chart,
+.files {
+  min-height: 18rem;
+  padding: 1rem;
+}
+
+.files {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.files dt code {
+  font-family: "SFMono-Regular", "Menlo", monospace;
+}
+
+.tooltip {
+  display: grid;
+  gap: 0.35rem;
+  padding: 1rem;
+}
+
+.tooltip dt {
+  font-weight: 700;
+}
+
+.tooltip dd {
+  margin: 0 0 0.65rem;
+}
+
+#spacer,
 #file-spacer {
   width: 100%;
   background: none;
   pointer-events: none;
 }
 
-
+#items-container,
 #file-items-container {
   position: absolute;
-  top: 0;
-  left: 0;
+  inset: 0 auto auto 0;
   width: 100%;
 }
 
 .file-item {
-  height: 120px;
+  min-height: 120px;
   box-sizing: border-box;
-  border-bottom: 2px solid #eee;
-  position: absolute;
+  padding-right: 0.5rem;
+  border-bottom: 1px solid var(--border);
 }
 
-/* Scrollytelling for meta page styling */
-#scrollytelling {
-  grid-column: 1 / -1;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 20px
+#scroll-indicator,
+#selection-count {
+  color: var(--muted);
+  font-size: 0.92rem;
+  font-weight: 600;
 }
 
-/* Adjust scrolling behavior */
-#scroll-container {
-  grid-column: 1;
-  position: relative;
-  width: 95%;
-  height: 350px;
-  overflow-y: scroll;
-  border: 1px solid #ccc;
-  margin-bottom: 50px;
+@media (max-width: 900px) {
+  .hero,
+  .split-layout,
+  .resume-layout,
+  #scrollytelling,
+  #files-scrollytelling,
+  .download-panel {
+    grid-template-columns: 1fr;
+  }
+
+  .download-panel {
+    align-items: start;
+  }
 }
 
-/* Scatterplot stays in the second column */
-#chart {
-  grid-column: 2;
-}
+@media (max-width: 720px) {
+  .page-shell {
+    width: min(100% - 1rem, var(--max-width));
+  }
 
-/* Spacer ensures scrolling without real content */
-#spacer {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  background: none;
-  pointer-events: none;
-}
+  .site-header {
+    align-items: start;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
 
-/* Container for dynamic commit list */
-#items-container {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-}
+  .hero,
+  .section-card {
+    padding: 1.35rem;
+  }
 
-/* Individual scrolling items */
-.item {
-  height: 120px;
-  box-sizing: border-box;
-  border-bottom: 2px solid #eee;
-}
+  .hero h1 {
+    font-size: clamp(2.35rem, 11vw, 3.25rem);
+  }
 
-#scroll-indicator {
-  position: fixed;
-  top: 50%;
-  right: 10px;
-  background: rgba(0, 0, 0, 0.7);
-  color: white;
-  padding: 5px 10px;
-  border-radius: 5px;
-  font-size: 0.9em;
-  transform: translateY(-50%);
-  pointer-events: none;
+  .site-nav ul,
+  .button-row,
+  .project-links,
+  .contact-links {
+    width: 100%;
+  }
+
+  .site-nav a,
+  .button,
+  .project-links .button,
+  .contact-links a {
+    width: 100%;
+  }
+
+  .project-grid,
+  .skills-grid,
+  .focus-grid,
+  .skills-grid.compact {
+    grid-template-columns: 1fr;
+  }
 }

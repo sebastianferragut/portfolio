@@ -1,77 +1,101 @@
 [
-    {
-        "title": "U.S. Power Outage Analysis",
-        "year": "2024",
-        "image": "https://www.ready.gov/sites/default/files/2019-09/hero_power_outage.jpg",
-        "description": "Power outage analysis using data from continental U.S. from January 2000 to July 2016.",
-        "link": "https://sebastianferragut.github.io/U.S.-Power-Outage-Analysis/"
+  {
+    "slug": "dsc180-privacy-project",
+    "title": "Privacy-Preserving Data Analysis (DSC180 Capstone)",
+    "summary": "Capstone research project exploring how privacy-preserving techniques affect data analysis and statistical inference.",
+    "tech": [
+      "Python",
+      "Data Analysis",
+      "Statistical Evaluation",
+      "Differential Privacy"
+    ],
+    "highlights": [
+      "Designed experiments evaluating the trade-off between privacy guarantees and data utility",
+      "Implemented reproducible data analysis pipelines to test privacy mechanisms",
+      "Analyzed how privacy noise affects statistical inference and modeling results",
+      "Published a public artifact site documenting methodology and findings"
+    ],
+    "links": {
+      "code": "https://github.com/sebastianferragut/DSC180A_PrivacyProject",
+      "artifact_repo": "https://github.com/sebastianferragut/DSC180-artifact-directory",
+      "artifact_site": "https://sebastianferragut.github.io/DSC180-artifact-directory/"
     },
-    {
-        "title": "Weather's Effect on Perceived Sickness in SD",
-        "year": "2025",
-        "image": "/images/weathersdproject.jpg",
-        "description": "Exploratory visualization of the relationship between weather and perceived sickness in San Diego using weather data and Google Trends."
+    "year": 2026,
+    "featured": true
+  },
+  {
+    "slug": "mice-explorable",
+    "title": "Interactive MICE Dataset Visualization",
+    "summary": "Interactive D3.js visualization exploring the MICE protein expression dataset.",
+    "tech": [
+      "D3.js",
+      "JavaScript",
+      "HTML",
+      "CSS",
+      "Data Visualization"
+    ],
+    "highlights": [
+      "Built interactive D3 visualizations to explore biological protein expression data",
+      "Implemented dynamic filtering and exploratory views across experimental conditions",
+      "Created a narrative interface to guide users through dataset patterns",
+      "Deployed the visualization as a public web application"
+    ],
+    "links": {
+      "code": "https://github.com/sebastianferragut/miceexplorable",
+      "demo": "https://sebastianferragut.github.io/miceexplorable/index.html"
     },
-    {
-        "title": "Understanding Heart Rate Variability Over Time of Day",
-        "year": "2025",
-        "image": "/images/heartrateproj.jpg",
-        "description": "Used BIG IDEAs Lab Glycemic Variability and Wearable Device Data to map heart rate variability over time of day across gender."
+    "year": 2025,
+    "featured": true
+  },
+  {
+    "slug": "cogs108-group-project",
+    "title": "COGS108 Data Science Group Project",
+    "summary": "Team-based data science project applying a full analytical workflow from data cleaning through statistical analysis.",
+    "tech": [
+      "Python",
+      "Pandas",
+      "Statistical Analysis",
+      "Data Visualization",
+      "Jupyter"
+    ],
+    "highlights": [
+      "Collaborated in a team to design and execute a complete data science workflow",
+      "Performed data cleaning, exploratory data analysis, and statistical hypothesis testing",
+      "Developed analytical models to evaluate research questions",
+      "Produced a reproducible notebook-based analysis and final report"
+    ],
+    "links": {
+      "code": "https://github.com/COGS108/Group087_WI26"
     },
-    {
-        "title": "Bikewatching Map.",
-        "year": "2025",
-        "image": "https://dsc106.com/labs/lab02/images/empty.svg",
-        "description": "Interactive map to visualize traffic of bikes in the Boston area. Created using Mapbox and D3.",
-        "link": "https://sebastianferragut.github.io/bikewatchingmap/"
+    "year": 2026,
+    "featured": true
+  },
+  {
+    "slug": "local-clinical-documentation-ai",
+    "title": "Local-First Clinical Documentation Assistant",
+    "summary": "Privacy-focused AI application that generates structured therapy documentation from typed or dictated session content using fully local models.",
+    "tech": [
+      "Python",
+      "Chainlit",
+      "React",
+      "llama-cpp-python",
+      "Faster-Whisper",
+      "Pydantic",
+      "python-docx",
+      "Docker"
+    ],
+    "highlights": [
+      "Built a local-first clinical documentation system that converts session notes or dictation into structured therapy documents",
+      "Developed a conversational Chainlit interface combined with custom React components for audio capture, transcript editing, autosave, and document review",
+      "Implemented local speech-to-text transcription and LLM-based document generation while keeping all processing on-device for privacy",
+      "Created structured workflow pipelines for generating progress notes, intake assessments, and treatment summaries",
+      "Built reliable DOCX template filling to produce documents aligned with real clinical forms instead of freeform AI text",
+      "Added tooling for batch note generation from structured session data to test repeatable document creation workflows"
+    ],
+    "links": {
+      "note": "Repository is private due to sensitive clinical data"
     },
-    {
-        "title": "Visualizing Mice Temperature Data Across Gender",
-        "year": "2025",
-        "image": "https://dsc106.com/labs/lab02/images/empty.svg",
-        "description": "Interactive exploratory visualization of mice health data, comparing male and female mice. Created using D3.",
-        "link": "https://sebastianferragut.github.io/miced3/"
-    },
-    {
-        "title": "Lorem ipsum dolor sit.",
-        "year": "2021",
-        "image": "https://dsc106.com/labs/lab02/images/empty.svg",
-        "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam dolor quos, quod assumenda explicabo odio, nobis ipsa laudantium quas eum veritatis ullam sint porro minima modi molestias doloribus cumque odit."
-    },
-    {
-        "title": "Lorem ipsum dolor sit.",
-        "year": "2020",
-        "image": "https://dsc106.com/labs/lab02/images/empty.svg",
-        "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam dolor quos, quod assumenda explicabo odio, nobis ipsa laudantium quas eum veritatis ullam sint porro minima modi molestias doloribus cumque odit."
-    },
-    {
-        "title": "Lorem ipsum dolor sit.",
-        "year": "2022",
-        "image": "https://dsc106.com/labs/lab02/images/empty.svg",
-        "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam dolor quos, quod assumenda explicabo odio, nobis ipsa laudantium quas eum veritatis ullam sint porro minima modi molestias doloribus cumque odit."
-    },
-    {
-        "title": "Lorem ipsum dolor sit.",
-        "year": "2021",
-        "image": "https://dsc106.com/labs/lab02/images/empty.svg",
-        "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam dolor quos, quod assumenda explicabo odio, nobis ipsa laudantium quas eum veritatis ullam sint porro minima modi molestias doloribus cumque odit."
-    },
-    {
-        "title": "Lorem ipsum dolor sit.",
-        "year": "2023",
-        "image": "https://dsc106.com/labs/lab02/images/empty.svg",
-        "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam dolor quos, quod assumenda explicabo odio, nobis ipsa laudantium quas eum veritatis ullam sint porro minima modi molestias doloribus cumque odit."
-    },
-    {
-        "title": "Lorem ipsum dolor sit.",
-        "year": "2024",
-        "image": "https://dsc106.com/labs/lab02/images/empty.svg",
-        "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam dolor quos, quod assumenda explicabo odio, nobis ipsa laudantium quas eum veritatis ullam sint porro minima modi molestias doloribus cumque odit."
-    },
-    {
-        "title": "Lorem ipsum dolor sit.",
-        "year": "2022",
-        "image": "https://dsc106.com/labs/lab02/images/empty.svg",
-        "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam dolor quos, quod assumenda explicabo odio, nobis ipsa laudantium quas eum veritatis ullam sint porro minima modi molestias doloribus cumque odit."
-    }
-] 
+    "year": 2026,
+    "featured": true
+  }
+]

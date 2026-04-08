@@ -1,25 +1,150 @@
 <!DOCTYPE html>
 <html lang="en">
-<html class="home">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <script src="global.js" type="module"></script>
-    <script src="index.js" type="module" defer></script>
-    <title>Sebastian Ferragut: Personal site and portfolio</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Portfolio of Sebastian Ferragut, a UC San Diego Data Science student focused on data analysis, machine learning, and data visualization.">
+  <link rel="stylesheet" href="./style.css">
+  <script src="./index.js" type="module" defer></script>
+  <title>Sebastian Ferragut | UC San Diego Data Science Student</title>
 </head>
 <body>
-    <h1>Sebastian Ferragut</h1>
-    <p>I am a third year Data Science major at UCSD.</p>
-    <img src="images/portfolioself.jpg" alt="Self Portrait" width="120" height="180">
-    <h2>Latest Projects</h2>
-    <div class="projects">
-        <!-- Dynamically added content will appear here -->
-    </div>
-    <h3>My GitHub Stats</h3>
-    <div id="profile-stats">
-        <!-- Dynamically added content will appear here -->
-    </div>
+  <div class="page-shell">
+    <header class="site-header">
+      <a class="site-brand" href="./">Sebastian Ferragut</a>
+      <nav class="site-nav" aria-label="Primary">
+        <ul>
+          <li><a href="./" aria-current="page">Home</a></li>
+          <li><a href="./projects/">Projects</a></li>
+          <li><a href="./resume/">Resume</a></li>
+          <li><a href="./contact/">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">UC San Diego Data Science Student</p>
+          <h1>Sebastian Ferragut</h1>
+          <p class="hero-intro">
+            I build practical data projects that combine analysis, visualization, and clear communication.
+            My work focuses on turning technical questions into polished, understandable results.
+          </p>
+          <div class="button-row">
+            <a class="button" href="./projects/">View Projects</a>
+            <a class="button button-secondary" href="./resume/">Resume</a>
+            <a class="button button-secondary" href="https://github.com/sebastianferragut" target="_blank" rel="noreferrer">GitHub</a>
+          </div>
+        </div>
+
+        <aside class="hero-panel" aria-label="Profile highlights">
+          <img class="portrait" src="./images/portfolioself.jpg" alt="Portrait of Sebastian Ferragut">
+          <dl class="hero-facts">
+            <div>
+              <dt>Focus</dt>
+              <dd>Data analysis, machine learning, and visualization</dd>
+            </div>
+            <div>
+              <dt>Strength</dt>
+              <dd>Structured project work with clear presentation</dd>
+            </div>
+            <div>
+              <dt>Current Work</dt>
+              <dd>Course and independent projects in Python, D3.js, and local AI tooling</dd>
+            </div>
+          </dl>
+        </aside>
+      </section>
+
+      <section class="section-card" id="about">
+        <div class="section-heading">
+          <p class="eyebrow">About</p>
+          <h2>Analytical work with a practical project mindset</h2>
+        </div>
+        <div class="split-layout">
+          <p class="lead">
+            I am a Data Science student at UC San Diego with interests in data analysis, machine learning, visualization, and privacy-aware applications.
+            My project work emphasizes reproducible analysis, thoughtful interpretation, and clean presentation for technical and non-technical audiences.
+          </p>
+          <div class="focus-grid">
+            <article class="mini-card">
+              <h3>Data Analysis</h3>
+              <p>Cleaning data, testing ideas, and building reliable analytical workflows in Python and Jupyter.</p>
+            </article>
+            <article class="mini-card">
+              <h3>Visualization</h3>
+              <p>Designing clear visual explanations and interactive experiences that help users explore real datasets.</p>
+            </article>
+            <article class="mini-card">
+              <h3>Applied ML Tools</h3>
+              <p>Implementing practical machine learning and local AI workflows where privacy and usability matter.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-card" id="featured-projects">
+        <div class="section-heading">
+          <p class="eyebrow">Featured Projects</p>
+          <h2>Selected work</h2>
+          <p>Four projects that best represent my current work in data analysis, visualization, and applied AI.</p>
+        </div>
+        <div class="project-grid" data-featured-projects></div>
+      </section>
+
+      <section class="section-card" id="skills">
+        <div class="section-heading">
+          <p class="eyebrow">Skills</p>
+          <h2>Technical toolkit</h2>
+        </div>
+        <div class="skills-grid">
+          <article class="mini-card">
+            <h3>Languages and Libraries</h3>
+            <p>Python, JavaScript, HTML, CSS, Pandas, D3.js, Jupyter</p>
+          </article>
+          <article class="mini-card">
+            <h3>Analysis and Modeling</h3>
+            <p>Data cleaning, exploratory analysis, statistical evaluation, reproducible workflows, model-focused project work</p>
+          </article>
+          <article class="mini-card">
+            <h3>Tools and Delivery</h3>
+            <p>GitHub, Chainlit, React, Docker, local AI tooling, static web deployment with GitHub Pages</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section-card resume-teaser" id="resume">
+        <div class="section-heading">
+          <p class="eyebrow">Resume</p>
+          <h2>Resume page ready for final integration</h2>
+        </div>
+        <p>
+          The resume page is structured for a final rewritten resume and already includes education, technical skills, and selected project summaries.
+          It is set up so a downloadable PDF can be added cleanly later.
+        </p>
+        <div class="button-row">
+          <a class="button" href="./resume/">View Resume Page</a>
+        </div>
+      </section>
+
+      <section class="section-card" id="contact">
+        <div class="section-heading">
+          <p class="eyebrow">Contact</p>
+          <h2>Get in touch</h2>
+        </div>
+        <p>Best way to reach me is by email. You can also find my work and profile on GitHub and LinkedIn.</p>
+        <div class="contact-links">
+          <a href="mailto:ferragut.sebastian@gmail.com">ferragut.sebastian@gmail.com</a>
+          <a href="https://github.com/sebastianferragut" target="_blank" rel="noreferrer">GitHub</a>
+          <a href="https://www.linkedin.com/in/sebastian-ferragut/" target="_blank" rel="noreferrer">LinkedIn</a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p><a href="./meta/">Site meta</a></p>
+    </footer>
+  </div>
 </body>
 </html>
