@@ -1,4 +1,4 @@
-import { fetchJSON, renderProjects } from "../global.js";
+import { fetchJSON, orderProjects, renderProjects } from "../global.js";
 
 const projectsContainer = document.querySelector("[data-project-list]");
 
@@ -10,7 +10,7 @@ async function loadProjects() {
   try {
     const projects = await fetchJSON("../lib/projects.json");
 
-    renderProjects(projects, projectsContainer, {
+    renderProjects(orderProjects(projects), projectsContainer, {
       detailed: true
     });
   } catch (error) {

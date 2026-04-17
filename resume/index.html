@@ -16,7 +16,7 @@
           <li><a href="../">Home</a></li>
           <li><a href="../projects/">Projects</a></li>
           <li><a href="./" aria-current="page">Resume</a></li>
-          <li><a href="../contact/">Contact</a></li>
+          <li><a href="../index.html#contact">Contact</a></li>
         </ul>
       </nav>
     </header>
@@ -24,87 +24,31 @@
     <main class="resume-page">
       <section class="section-card page-intro">
         <p class="eyebrow">Resume</p>
-        <h1>Resume-ready overview</h1>
+        <h1>Resume</h1>
         <p class="lead">
-          This page is structured for final resume integration and already captures the core information a recruiter should see:
-          education, technical skills, and selected project experience.
+          View the current PDF resume below.
         </p>
       </section>
 
-      <section class="section-card download-panel">
-        <div>
-          <h2>Downloadable PDF</h2>
-          <p>A final polished resume PDF will be linked here once the rewritten version is ready.</p>
+      <section class="section-card resume-viewer-card">
+        <div class="resume-actions">
+          <a class="button" href="./Sebastian_Ferragut_Resume.pdf" target="_blank" rel="noreferrer">Open PDF</a>
+          <a class="button button-secondary" href="./Sebastian_Ferragut_Resume.pdf" download>Download PDF</a>
+          <a class="button button-secondary" href="../index.html#contact">Contact Me</a>
+          <a class="button button-secondary projects-cta-button" href="../projects/">View All Projects</a>
         </div>
-        <div class="button-row">
-          <span class="button button-disabled" aria-disabled="true">Resume PDF Coming Soon</span>
-          <a class="button button-secondary" href="../contact/">Contact Me</a>
-        </div>
-      </section>
-
-      <section class="resume-layout">
-        <article class="section-card">
-          <h2>Professional Summary</h2>
-          <p>
-            UC San Diego Data Science student with project experience in data analysis, statistical evaluation, interactive visualization, and privacy-focused AI applications.
-            Interested in building analytical workflows and polished tools that make technical work easier to understand and use.
+        <article class="resume-embed-shell">
+          <iframe
+            class="resume-frame"
+            src="./Sebastian_Ferragut_Resume.pdf"
+            title="Sebastian Ferragut resume PDF"
+          ></iframe>
+          <p class="project-note resume-fallback">
+            If the PDF preview does not load in your browser, use Open PDF or Download PDF above.
           </p>
-        </article>
-
-        <article class="section-card">
-          <h2>Education</h2>
-          <div class="resume-entry">
-            <h3>University of California, San Diego</h3>
-            <p>B.S. in Data Science</p>
-            <p>Expected graduation: 2026</p>
-          </div>
-        </article>
-
-        <article class="section-card">
-          <h2>Technical Skills</h2>
-          <div class="skills-grid compact">
-            <article class="mini-card">
-              <h3>Programming</h3>
-              <p>Python, JavaScript, HTML, CSS</p>
-            </article>
-            <article class="mini-card">
-              <h3>Data Work</h3>
-              <p>Pandas, Jupyter, data analysis, statistical analysis, reproducible notebook workflows</p>
-            </article>
-            <article class="mini-card">
-              <h3>Visualization and Tools</h3>
-              <p>D3.js, Chainlit, React, Docker, GitHub Pages</p>
-            </article>
-          </div>
-        </article>
-
-        <article class="section-card">
-          <h2>Selected Projects</h2>
-          <div class="resume-projects">
-            <div class="resume-entry">
-              <h3><a href="../projects/#dsc180-privacy-project">Privacy-Preserving Data Analysis (DSC180 Capstone)</a></h3>
-              <p>Research project on how privacy-preserving methods affect data utility, statistical inference, and reproducible analysis workflows.</p>
-            </div>
-            <div class="resume-entry">
-              <h3><a href="../projects/#mice-explorable">Interactive MICE Dataset Visualization</a></h3>
-              <p>D3.js-based visualization project presenting protein expression data through exploratory and narrative web interfaces.</p>
-            </div>
-            <div class="resume-entry">
-              <h3><a href="../projects/#cogs108-group-project">COGS108 Data Science Group Project</a></h3>
-              <p>Team project covering data cleaning, exploratory analysis, hypothesis testing, and notebook-based reporting.</p>
-            </div>
-            <div class="resume-entry">
-              <h3><a href="../projects/#local-clinical-documentation-ai">Local-First Clinical Documentation Assistant</a></h3>
-              <p>Privacy-focused AI application for generating structured therapy documentation with local models and local processing.</p>
-            </div>
-          </div>
         </article>
       </section>
     </main>
-
-    <footer class="site-footer">
-      <p><a href="../meta/">Site meta</a></p>
-    </footer>
   </div>
 </body>
 </html>

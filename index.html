@@ -17,7 +17,7 @@
           <li><a href="./" aria-current="page">Home</a></li>
           <li><a href="./projects/">Projects</a></li>
           <li><a href="./resume/">Resume</a></li>
-          <li><a href="./contact/">Contact</a></li>
+          <li><a href="#contact">Contact</a></li>
         </ul>
       </nav>
     </header>
@@ -28,59 +28,57 @@
           <p class="eyebrow">UC San Diego Data Science Student</p>
           <h1>Sebastian Ferragut</h1>
           <p class="hero-intro">
-            I build practical data projects that combine analysis, visualization, and clear communication.
-            My work focuses on turning technical questions into polished, understandable results.
+            I build practical data projects that combine analysis, visualization, and privacy-conscious AI workflows.
+            My work focuses on making technical ideas clear, usable, and well presented.
           </p>
           <div class="button-row">
             <a class="button" href="./projects/">View Projects</a>
             <a class="button button-secondary" href="./resume/">Resume</a>
             <a class="button button-secondary" href="https://github.com/sebastianferragut" target="_blank" rel="noreferrer">GitHub</a>
           </div>
-        </div>
-
-        <aside class="hero-panel" aria-label="Profile highlights">
-          <img class="portrait" src="./images/portfolioself.jpg" alt="Portrait of Sebastian Ferragut">
           <dl class="hero-facts">
             <div>
               <dt>Focus</dt>
-              <dd>Data analysis, machine learning, and visualization</dd>
+              <dd>Data analysis, interactive visualization, and privacy-aware AI applications</dd>
             </div>
             <div>
               <dt>Strength</dt>
-              <dd>Structured project work with clear presentation</dd>
+              <dd>Structured project work with clear technical communication</dd>
             </div>
             <div>
               <dt>Current Work</dt>
-              <dd>Course and independent projects in Python, D3.js, and local AI tooling</dd>
+              <dd>Course and independent projects in Python, D3.js, and local-first AI tooling</dd>
             </div>
           </dl>
+        </div>
+
+        <aside class="hero-panel hero-photo-panel" aria-label="Profile portrait">
+          <img class="portrait" src="./images/portfolioself.jpg" alt="Portrait of Sebastian Ferragut">
         </aside>
       </section>
 
-      <section class="section-card" id="about">
+      <section class="section-card about-section" id="about">
         <div class="section-heading">
           <p class="eyebrow">About</p>
-          <h2>Analytical work with a practical project mindset</h2>
+          <h2>Analytical work with a practical product mindset</h2>
         </div>
-        <div class="split-layout">
-          <p class="lead">
-            I am a Data Science student at UC San Diego with interests in data analysis, machine learning, visualization, and privacy-aware applications.
-            My project work emphasizes reproducible analysis, thoughtful interpretation, and clean presentation for technical and non-technical audiences.
-          </p>
-          <div class="focus-grid">
-            <article class="mini-card">
-              <h3>Data Analysis</h3>
-              <p>Cleaning data, testing ideas, and building reliable analytical workflows in Python and Jupyter.</p>
-            </article>
-            <article class="mini-card">
-              <h3>Visualization</h3>
-              <p>Designing clear visual explanations and interactive experiences that help users explore real datasets.</p>
-            </article>
-            <article class="mini-card">
-              <h3>Applied ML Tools</h3>
-              <p>Implementing practical machine learning and local AI workflows where privacy and usability matter.</p>
-            </article>
-          </div>
+        <p class="lead">
+          I am a Data Science student at UC San Diego interested in data analysis, interactive visualization, and privacy-conscious AI applications.
+          My project work emphasizes reproducible workflows, thoughtful interpretation, and clear presentation for technical and non-technical audiences.
+        </p>
+        <div class="focus-grid">
+          <article class="mini-card">
+            <h3>Data Analysis</h3>
+            <p>Cleaning data, testing ideas, and building reliable analytical workflows in Python and Jupyter.</p>
+          </article>
+          <article class="mini-card">
+            <h3>Visualization</h3>
+            <p>Designing clear visual explanations and interactive experiences that help users explore real datasets.</p>
+          </article>
+          <article class="mini-card">
+            <h3>Applied ML Tools</h3>
+            <p>Implementing practical machine learning and local AI workflows where privacy and usability matter.</p>
+          </article>
         </div>
       </section>
 
@@ -88,7 +86,7 @@
         <div class="section-heading">
           <p class="eyebrow">Featured Projects</p>
           <h2>Selected work</h2>
-          <p>Four projects that best represent my current work in data analysis, visualization, and applied AI.</p>
+          <p>Selected projects in data analysis, visualization, and applied AI.</p>
         </div>
         <div class="project-grid" data-featured-projects></div>
       </section>
@@ -97,34 +95,28 @@
         <div class="section-heading">
           <p class="eyebrow">Skills</p>
           <h2>Technical toolkit</h2>
+          <p>Concise tools and workflows used across the projects featured in this portfolio.</p>
         </div>
         <div class="skills-grid">
           <article class="mini-card">
-            <h3>Languages and Libraries</h3>
+            <h3>Languages and Core Tools</h3>
             <p>Python, JavaScript, HTML, CSS, Pandas, D3.js, Jupyter</p>
           </article>
           <article class="mini-card">
-            <h3>Analysis and Modeling</h3>
-            <p>Data cleaning, exploratory analysis, statistical evaluation, reproducible workflows, model-focused project work</p>
+            <h3>Analytical Workflows</h3>
+            <p>Reproducible analysis, statistical evaluation, implementation, and clear communication in project teams</p>
           </article>
           <article class="mini-card">
-            <h3>Tools and Delivery</h3>
-            <p>GitHub, Chainlit, React, Docker, local AI tooling, static web deployment with GitHub Pages</p>
+            <h3>Delivery and Collaboration</h3>
+            <p>GitHub, Chainlit, React, Docker, static deployment, and polished project presentation</p>
           </article>
         </div>
       </section>
 
       <section class="section-card resume-teaser" id="resume">
-        <div class="section-heading">
-          <p class="eyebrow">Resume</p>
-          <h2>Resume page ready for final integration</h2>
-        </div>
-        <p>
-          The resume page is structured for a final rewritten resume and already includes education, technical skills, and selected project summaries.
-          It is set up so a downloadable PDF can be added cleanly later.
-        </p>
         <div class="button-row">
-          <a class="button" href="./resume/">View Resume Page</a>
+          <a class="button resume-cta-button" href="./resume/">View Resume Page</a>
+          <a class="button button-secondary projects-cta-button" href="./projects/">View Projects</a>
         </div>
       </section>
 
@@ -142,9 +134,6 @@
       </section>
     </main>
 
-    <footer class="site-footer">
-      <p><a href="./meta/">Site meta</a></p>
-    </footer>
   </div>
 </body>
 </html>

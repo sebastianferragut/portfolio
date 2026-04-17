@@ -1,9 +1,20 @@
 const LINK_LABELS = {
   code: "View Code",
   artifact_repo: "Artifact Repo",
-  artifact_site: "Artifact Site",
-  demo: "Live Demo"
+  artifact_site: "View Project Site",
+  demo: "Live Demo",
+  notebook: "View Notebook"
 };
+
+const FEATURED_BADGE_SLUG = "agentic-privacy-control-center";
+
+const PROJECT_ORDER = [
+  "agentic-privacy-control-center",
+  "local-clinical-documentation-ai",
+  "nyc-citibike-product-analytics-pipeline",
+  "income-carbon-emissions-san-diego",
+  "mice-explorable"
+];
 
 export async function fetchJSON(url) {
   const response = await fetch(url);
@@ -13,6 +24,16 @@ export async function fetchJSON(url) {
   }
 
   return response.json();
+}
+
+export function orderProjects(projects) {
+  return [...projects].sort((left, right) => {
+    const leftIndex = PROJECT_ORDER.indexOf(left.slug);
+    const rightIndex = PROJECT_ORDER.indexOf(right.slug);
+    const normalizedLeft = leftIndex === -1 ? PROJECT_ORDER.length : leftIndex;
+    const normalizedRight = rightIndex === -1 ? PROJECT_ORDER.length : rightIndex;
+    return normalizedLeft - normalizedRight;
+  });
 }
 
 function createElement(tagName, className, textContent) {
@@ -49,10 +70,25 @@ function createHighlightsList(highlights = [], maxHighlights = highlights.length
   return list;
 }
 
-function createProjectLinks(links = {}) {
+function createProjectLinks(project) {
+  const { links = {}, primary_link: primaryLinkKey } = project;
   const wrapper = createElement("div", "project-links");
+  const renderedKeys = new Set();
+
+  if (primaryLinkKey && links[primaryLinkKey]) {
+    const primaryAnchor = createElement("a", "button", LINK_LABELS[primaryLinkKey] ?? primaryLinkKey);
+    primaryAnchor.href = links[primaryLinkKey];
+    primaryAnchor.target = "_blank";
+    primaryAnchor.rel = "noreferrer";
+    wrapper.append(primaryAnchor);
+    renderedKeys.add(primaryLinkKey);
+  }
 
   Object.entries(links).forEach(([key, value]) => {
+    if (renderedKeys.has(key)) {
+      return;
+    }
+
     if (key === "note") {
       wrapper.append(createElement("p", "project-note", value));
       return;
@@ -82,7 +118,7 @@ function createProjectCard(project, options = {}) {
   const meta = createElement("div", "project-meta");
   meta.append(createElement("span", "project-year", String(project.year)));
 
-  if (project.featured) {
+  if (project.slug === FEATURED_BADGE_SLUG) {
     meta.append(createElement("span", "project-badge", "Featured"));
   }
 
@@ -99,7 +135,7 @@ function createProjectCard(project, options = {}) {
   }
 
   if (project.links) {
-    article.append(createProjectLinks(project.links));
+    article.append(createProjectLinks(project));
   }
 
   return article;

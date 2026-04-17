@@ -1,32 +1,33 @@
 [
   {
-    "slug": "dsc180-privacy-project",
-    "title": "Privacy-Preserving Data Analysis (DSC180 Capstone)",
-    "summary": "Capstone research project exploring how privacy-preserving techniques affect data analysis and statistical inference.",
+    "slug": "agentic-privacy-control-center",
+    "title": "Agentic Privacy Control Center",
+    "summary": "DSC180 capstone project exploring privacy-aware analytical workflows through an agentic system design and a public artifact site documenting the project.",
     "tech": [
       "Python",
       "Data Analysis",
-      "Statistical Evaluation",
-      "Differential Privacy"
+      "Privacy",
+      "Agentic Workflows"
     ],
     "highlights": [
-      "Designed experiments evaluating the trade-off between privacy guarantees and data utility",
-      "Implemented reproducible data analysis pipelines to test privacy mechanisms",
-      "Analyzed how privacy noise affects statistical inference and modeling results",
-      "Published a public artifact site documenting methodology and findings"
+      "Developed a DSC180 capstone project centered on privacy-aware analytical workflows and agentic system design",
+      "Explored how privacy considerations shape data analysis, system behavior, and project outputs",
+      "Produced a public artifact site documenting the project structure, methodology, and deliverables",
+      "Built supporting materials that present the project clearly in a portfolio-ready format"
     ],
     "links": {
+      "artifact_site": "https://sebastianferragut.github.io/DSC180-artifact-directory/",
       "code": "https://github.com/sebastianferragut/DSC180A_PrivacyProject",
-      "artifact_repo": "https://github.com/sebastianferragut/DSC180-artifact-directory",
-      "artifact_site": "https://sebastianferragut.github.io/DSC180-artifact-directory/"
+      "artifact_repo": "https://github.com/sebastianferragut/DSC180-artifact-directory"
     },
     "year": 2026,
-    "featured": true
+    "featured": true,
+    "primary_link": "artifact_site"
   },
   {
     "slug": "mice-explorable",
     "title": "Interactive MICE Dataset Visualization",
-    "summary": "Interactive D3.js visualization exploring the MICE protein expression dataset.",
+    "summary": "Interactive D3.js visualization exploring the MICE protein expression dataset through dynamic filtering and narrative analysis.",
     "tech": [
       "D3.js",
       "JavaScript",
@@ -37,20 +38,47 @@
     "highlights": [
       "Built interactive D3 visualizations to explore biological protein expression data",
       "Implemented dynamic filtering and exploratory views across experimental conditions",
-      "Created a narrative interface to guide users through dataset patterns",
+      "Designed a narrative interface to guide users through dataset patterns",
       "Deployed the visualization as a public web application"
     ],
     "links": {
-      "code": "https://github.com/sebastianferragut/miceexplorable",
-      "demo": "https://sebastianferragut.github.io/miceexplorable/index.html"
+      "demo": "https://sebastianferragut.github.io/miceexplorable/index.html",
+      "code": "https://github.com/sebastianferragut/miceexplorable"
     },
     "year": 2025,
-    "featured": true
+    "featured": true,
+    "primary_link": "demo"
   },
   {
-    "slug": "cogs108-group-project",
-    "title": "COGS108 Data Science Group Project",
-    "summary": "Team-based data science project applying a full analytical workflow from data cleaning through statistical analysis.",
+    "slug": "nyc-citibike-product-analytics-pipeline",
+    "title": "NYC Citibike Product Analytics Pipeline",
+    "summary": "Local-first analytics pipeline for 2025 NYC Citibike trip data, covering ingestion, warehouse modeling, SQL analysis, and notebook-based reporting.",
+    "tech": [
+      "SQL",
+      "PostgreSQL",
+      "Python",
+      "DuckDB",
+      "Docker",
+      "Data Engineering"
+    ],
+    "highlights": [
+      "Engineered an end-to-end local-first data pipeline ingesting 8.8 GB of official 2025 NYC Citibike trip archives from raw CSV extraction through DuckDB normalization, Parquet staging, and PostgreSQL loading",
+      "Designed a relational schema and authored analytics SQL using CTEs, window functions, date truncation, and percentile aggregations to answer core product questions",
+      "Built data quality validation checks against a curated schema and implemented rider-proxy metrics such as DAU, WAU, MAU, and churn proxies for datasets without persistent user identifiers",
+      "Authored a reproducible Jupyter notebook and reporting workflow demonstrating the analytics engineering process from ingestion to insight"
+    ],
+    "links": {
+      "code": "https://github.com/sebastianferragut/citibike-analytics",
+      "notebook": "https://github.com/sebastianferragut/citibike-analytics/blob/main/notebooks/citibike_analysis.ipynb"
+    },
+    "year": 2026,
+    "featured": true,
+    "primary_link": "code"
+  },
+  {
+    "slug": "income-carbon-emissions-san-diego",
+    "title": "The Relationship Between Income and Carbon Emissions: Do the Wealthy Pollute More in San Diego?",
+    "summary": "COGS108 group project investigating whether income level is associated with higher carbon emissions in San Diego through data analysis and statistical testing.",
     "tech": [
       "Python",
       "Pandas",
@@ -59,16 +87,17 @@
       "Jupyter"
     ],
     "highlights": [
-      "Collaborated in a team to design and execute a complete data science workflow",
-      "Performed data cleaning, exploratory data analysis, and statistical hypothesis testing",
-      "Developed analytical models to evaluate research questions",
-      "Produced a reproducible notebook-based analysis and final report"
+      "Collaborated in a team to investigate the relationship between income and carbon emissions in San Diego",
+      "Performed data cleaning, exploratory analysis, and statistical hypothesis testing",
+      "Developed a reproducible notebook-based workflow to evaluate the research question",
+      "Produced a final project report communicating the analysis and findings"
     ],
     "links": {
       "code": "https://github.com/COGS108/Group087_WI26"
     },
     "year": 2026,
-    "featured": true
+    "featured": true,
+    "primary_link": "code"
   },
   {
     "slug": "local-clinical-documentation-ai",
@@ -87,9 +116,9 @@
     "highlights": [
       "Built a local-first clinical documentation system that converts session notes or dictation into structured therapy documents",
       "Developed a conversational Chainlit interface combined with custom React components for audio capture, transcript editing, autosave, and document review",
-      "Implemented local speech-to-text transcription and LLM-based document generation while keeping all processing on-device for privacy",
-      "Created structured workflow pipelines for generating progress notes, intake assessments, and treatment summaries",
-      "Built reliable DOCX template filling to produce documents aligned with real clinical forms instead of freeform AI text",
+      "Implemented local speech-to-text transcription and LLM-based document generation while keeping processing on-device for privacy",
+      "Created structured workflows for generating progress notes, intake assessments, and treatment summaries",
+      "Built reliable DOCX template filling aligned with real clinical forms instead of freeform AI text",
       "Added tooling for batch note generation from structured session data to test repeatable document creation workflows"
     ],
     "links": {
