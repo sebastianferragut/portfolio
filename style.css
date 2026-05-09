@@ -138,16 +138,26 @@ main {
 
 .hero {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 180px;
-  gap: 1.35rem;
-  align-items: start;
   padding: 2rem;
 }
 
 .hero-copy {
   display: grid;
-  gap: 0.9rem;
+  gap: 1.05rem;
   align-content: start;
+}
+
+.hero-heading,
+.hero-details {
+  display: grid;
+  gap: 0.9rem;
+}
+
+.hero-main {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(160px, 220px);
+  gap: 1.35rem;
+  align-items: stretch;
 }
 
 .hero h1 {
@@ -224,13 +234,24 @@ main {
 }
 
 .hero-photo-panel {
-  align-self: start;
+  position: relative;
+  align-self: stretch;
+  justify-self: end;
+  width: 100%;
+  max-width: 220px;
+  box-sizing: border-box;
+  min-height: 0;
 }
 
 .portrait {
-  aspect-ratio: 1 / 1.18;
-  width: 100%;
+  position: absolute;
+  inset: 0.75rem;
+  width: calc(100% - 1.5rem);
+  height: calc(100% - 1.5rem);
+  min-height: 0;
+  display: block;
   object-fit: cover;
+  object-position: 42% center;
   border: 1px solid var(--border);
   border-radius: var(--radius-sm);
 }
@@ -711,15 +732,14 @@ main {
 }
 
 @media (max-width: 900px) {
-  .hero,
   #scrollytelling,
   #files-scrollytelling,
   .download-panel {
     grid-template-columns: 1fr;
   }
 
-  .hero {
-    grid-template-columns: minmax(0, 1fr) 150px;
+  .hero-main {
+    grid-template-columns: minmax(0, 1fr) minmax(140px, 180px);
   }
 
   .hero-facts,
@@ -748,8 +768,21 @@ main {
     padding: 1.35rem;
   }
 
-  .hero {
+  .hero-main {
     grid-template-columns: 1fr;
+  }
+
+  .hero-photo-panel {
+    align-self: start;
+    justify-self: start;
+    max-width: min(220px, 100%);
+  }
+
+  .portrait {
+    position: static;
+    width: 100%;
+    aspect-ratio: 1 / 1.18;
+    height: auto;
   }
 
   .hero h1 {
